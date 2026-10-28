@@ -457,3 +457,41 @@ a.row:hover { background: #f7f8fc; }
 }
 
 .tc-select { border: 1px solid var(--line); border-radius: var(--r-sm); padding: 8px 10px; font: inherit; background: var(--paper); color: var(--ink); min-height: 40px; }
+
+/* ---------- wide screens: use the whole window, not a narrow column ---------- */
+.alerts-page { max-width: 640px; }
+.alert-grid { display: grid; gap: 14px; }
+@media (min-width: 1100px) {
+  .main, .demo-note, .topbar-inner { max-width: 1600px; }
+  .main { padding-left: clamp(28px, 3.5vw, 64px); padding-right: clamp(28px, 3.5vw, 64px); }
+  .topbar-inner { padding-left: clamp(28px, 3.5vw, 64px); padding-right: clamp(28px, 3.5vw, 64px); }
+  .demo-note { padding-left: clamp(28px, 3.5vw, 64px); padding-right: clamp(28px, 3.5vw, 64px); }
+
+  /* Today: a wide left column and a wide side column */
+  .today { grid-template-columns: minmax(0, 1.45fr) minmax(400px, 1fr); gap: 64px; }
+
+  /* Call detail: two columns, header across the top */
+  .detail { max-width: none; column-count: 2; column-gap: 64px; }
+  .detail > .back, .detail > .meta, .detail > h1, .detail > .when, .detail > p.error { column-span: all; }
+  .detail > .section, .detail > * { break-inside: avoid; }
+  .detail > .section[aria-labelledby="convo-h"] { break-inside: auto; }
+  .detail .two { grid-template-columns: 1fr; }
+
+  /* Week and Profile */
+  .week { max-width: none; }
+  .week-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+  .form { max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+  .form > .form-actions, .form > .error { grid-column: 1 / -1; }
+
+  /* Lists and alerts */
+  .alerts-page { max-width: none; }
+  .alert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: start; }
+  .alert-grid > .alert { margin: 0; }
+  .tc { max-width: 900px; }
+}
+@media (min-width: 1400px) {
+  .main > .list { display: grid; grid-template-columns: 1fr 1fr; }
+  .main > .list > .row { border-top: 0; border-bottom: 1px solid var(--line-soft); }
+  .main > .list > .row:nth-child(odd) { border-right: 1px solid var(--line-soft); }
+  .alert-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

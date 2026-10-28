@@ -17,7 +17,7 @@ export default function Alerts() {
   }
 
   return (
-    <div style={{ maxWidth: 640 }}>
+    <div className="alerts-page">
       <div className="page-head">
         <h1 className="page-title">Alerts</h1>
       </div>
@@ -25,11 +25,15 @@ export default function Alerts() {
         Saath alerts you when {parent.address_term} mentions something urgent, calls Saath herself, misses a check-in, or her mood or voice stays away from her usual for several calls. One bad day never sends an alert on its own.
       </p>
       {alerts.length === 0 && <p className="empty">No alerts yet.</p>}
-      {unread.map((a) => <AlertCard key={a.id} alert={a} parent={parent} anchor={anchor} onSeen={onSeen} />)}
+      <div className="alert-grid">
+        {unread.map((a) => <AlertCard key={a.id} alert={a} parent={parent} anchor={anchor} onSeen={onSeen} />)}
+      </div>
       {read.length > 0 && (
         <>
           <h2 className="h2" style={{ marginTop: 28 }}>Read</h2>
-          {read.map((a) => <AlertCard key={a.id} alert={a} parent={parent} anchor={anchor} />)}
+          <div className="alert-grid">
+            {read.map((a) => <AlertCard key={a.id} alert={a} parent={parent} anchor={anchor} />)}
+          </div>
         </>
       )}
     </div>
