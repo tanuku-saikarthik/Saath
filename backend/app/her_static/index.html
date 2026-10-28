@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="te">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1E2140">
+<link rel="manifest" href="/her/manifest.webmanifest">
+<link rel="icon" href="/her/icon-192.png">
+<title>Saath</title>
+<style>
+:root{--navy:#1E2140;--cream:#FBFAF6;--gold:#E8A33D;--red:#C8372D;--ink:#1E2140;--soft:#4B4F72}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:var(--cream);color:var(--ink);font-family:system-ui,"Noto Sans Telugu","Noto Sans Devanagari",sans-serif}
+main{max-width:560px;margin:0 auto;padding:20px 16px calc(24px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:16px;min-height:100vh}
+h1{font-size:30px;margin:6px 0 0;line-height:1.25}
+.msg{background:#EEF0F6;border-radius:18px;padding:16px 18px;font-size:22px;line-height:1.45}
+.msg small{display:block;font-size:16px;color:var(--soft);margin-bottom:4px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:84px;border:0;border-radius:22px;font-size:26px;font-weight:700;text-decoration:none;text-align:center;padding:12px 16px;color:#fff;background:var(--navy)}
+.btn.gold{background:var(--gold);color:var(--navy)}
+.btn[aria-disabled=true]{opacity:.45;pointer-events:none}
+#sos{position:relative;overflow:hidden;background:var(--red);min-height:150px;font-size:34px;touch-action:none;user-select:none;-webkit-user-select:none}
+#sos .fill{position:absolute;inset:0 auto 0 0;width:0;background:rgba(0,0,0,.35)}
+#sos span{position:relative}
+#sos small{display:block;font-size:19px;font-weight:500;margin-top:4px}
+.note{font-size:20px;color:var(--soft);text-align:center;min-height:28px}
+.thanks{background:#E6F2E4;border-radius:16px;padding:14px;font-size:22px;text-align:center}
+input{width:100%;font-size:40px;letter-spacing:10px;text-align:center;padding:14px;border:3px solid var(--navy);border-radius:16px}
+.err{color:var(--red);font-size:20px;min-height:26px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+const T={
+ te:{hi:'నమస్తే',from:'నుండి సందేశం',sos:'సహాయం (SOS)',hold:'2 సెకన్లు నొక్కి పట్టండి',sent:'కుటుంబానికి చెప్పాను. ఫోన్ చేస్తున్నాను…',callC:n=>n+' కి ఫోన్',saath:'సాథ్ తో మాట్లాడండి',fine:'ఈ రోజు నేను బాగున్నాను',thanks:n=>'ధన్యవాదాలు. '+n+' కి తెలియజేశాను.',pairH:'ఈ ఫోన్‌ను కలపండి',pairP:'6 అంకెల కోడ్ నమోదు చేయండి',go:'కలపండి',bad:'కోడ్ పని చేయలేదు. కొత్తది అడగండి.',net:'ఇంటర్నెట్ లేదు',nophone:'నంబర్ లేదు'},
+ hi:{hi:'नमस्ते',from:'की ओर से संदेश',sos:'मदद (SOS)',hold:'2 सेकंड दबाकर रखें',sent:'परिवार को बता दिया। फ़ोन लगा रही हूँ…',callC:n=>n+' को फ़ोन',saath:'साथ से बात करें',fine:'आज मैं ठीक हूँ',thanks:n=>'धन्यवाद। '+n+' को बता दिया।',pairH:'इस फ़ोन को जोड़ें',pairP:'6 अंकों का कोड डालें',go:'जोड़ें',bad:'कोड काम नहीं किया। नया माँगें।',net:'इंटरनेट नहीं है',nophone:'नंबर नहीं है'}
+};
+const $=document.getElementById('app');
+const tok=()=>{try{return localStorage.getItem('saath_her_token')||''}catch(e){return ''}};
+const save=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const api=(p,o={})=>fetch(p,{...o,headers:{'Content-Type':'application/json','X-Her-Token':tok(),...(o.headers||{})}});
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const digits=s=>String(s||'').replace(/[^\d+]/g,'');
+
+function pairing(lang='te'){
+  const t=T[lang];
+  $.innerHTML=`<h1>${t.pairH}</h1><p class="note">${t.pairP}</p><input id="code" inputmode="numeric" maxlength="6" autocomplete="one-time-code" aria-label="code"><div class="err" id="err" role="alert"></div><button class="btn gold" id="go">${t.go}</button>`;
+  document.getElementById('go').onclick=async()=>{
+    const code=document.getElementById('code').value.trim();
+    try{
+      const r=await fetch('/api/her/pair',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});
+      if(!r.ok) throw 0;
+      save('saath_her_token',(await r.json()).token);
+      start();
+    }catch(e){document.getElementById('err').textContent=t.bad}
+  };
+}
+
+function home(me){
+  const t=T[me.language==='hi'?'hi':'te'];
+  document.documentElement.lang=me.language==='hi'?'hi':'te';
+  const child=esc(me.child_name||'');
+  $.innerHTML=`
+   <h1>${t.hi} ${esc(me.address_term)}</h1>
+   ${me.message?`<div class="msg"><small>${child} ${t.from}</small>${esc(me.message)}</div>`:''}
+   <button class="btn" id="sos" aria-label="SOS"><div class="fill" id="fill"></div><span>${t.sos}<small>${t.hold}</small></span></button>
+   <div class="note" id="note"></div>
+   <a class="btn gold" id="callc" href="${me.child_phone?'tel:'+digits(me.child_phone):'#'}" ${me.child_phone?'':'aria-disabled="true"'}>📞 ${t.callC(child)}</a>
+   ${me.saath_number?`<a class="btn" href="tel:${digits(me.saath_number)}">💬 ${t.saath}</a>`:''}
+   <button class="btn" id="fine" style="background:#3D7A4A">🙂 ${t.fine}</button>
+   <div class="thanks" id="thanks" hidden></div>`;
+  const sos=document.getElementById('sos'),fill=document.getElementById('fill'),note=document.getElementById('note');
+  let timer=null,t0=0,raf=0;
+  const reset=()=>{clearTimeout(timer);cancelAnimationFrame(raf);fill.style.width='0'};
+  const fire=()=>{
+    reset();
+    if(navigator.vibrate)navigator.vibrate([200,100,200]);
+    note.textContent=t.sent;
+    try{fetch('/api/her/sos',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','X-Her-Token':tok()}})}catch(e){}
+    // Dial the family straight away; this works even with no internet.
+    if(me.child_phone) setTimeout(()=>{location.href='tel:'+digits(me.child_phone)},400);
+  };
+  const tick=()=>{const p=Math.min(1,(performance.now()-t0)/2000);fill.style.width=(p*100)+'%';if(p<1)raf=requestAnimationFrame(tick)};
+  sos.addEventListener('pointerdown',e=>{e.preventDefault();t0=performance.now();raf=requestAnimationFrame(tick);timer=setTimeout(fire,2000)});
+  ['pointerup','pointerleave','pointercancel'].forEach(ev=>sos.addEventListener(ev,reset));
+  sos.addEventListener('contextmenu',e=>e.preventDefault());
+  document.getElementById('fine').onclick=async()=>{
+    const th=document.getElementById('thanks');
+    try{const r=await api('/api/her/fine',{method:'POST'});if(!r.ok)throw 0;th.textContent=t.thanks(me.child_name||'')}catch(e){th.textContent=t.net}
+    th.hidden=false;
+  };
+}
+
+async function start(){
+  if(!tok()) return pairing();
+  try{
+    const r=await api('/api/her/me');
+    if(r.status===401){try{localStorage.removeItem('saath_her_token')}catch(e){};return pairing()}
+    if(!r.ok) throw 0;
+    const me=await r.json(); save('saath_her_me',JSON.stringify(me)); home(me);
+  }catch(e){
+    // Offline: show the last known screen so the call buttons still work.
+    let me=null;try{me=JSON.parse(localStorage.getItem('saath_her_me')||'null')}catch(_){}
+    me?home(me):pairing();
+  }
+}
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/her/sw.js',{scope:'/her'}).catch(()=>{});
+start();
+</script>
+</body>
+</html>

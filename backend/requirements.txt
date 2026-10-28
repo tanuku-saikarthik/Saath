@@ -1,0 +1,9 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+sqlmodel>=0.0.22
+apscheduler>=3.10,<4
+httpx>=0.27
+numpy>=1.26  # voice wellness signals (pace, pauses, pitch)
+python-dotenv>=1.0
+python-multipart>=0.0.9  # audio uploads for the browser test call
+tzdata>=2024.1  # timezone data; Windows Python ships without it

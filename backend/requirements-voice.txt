@@ -1,0 +1,8 @@
+# Voice emotion (emotion2vec+ large via FunASR). Large download: torch now, the model on first run.
+# Check it works: python -m app.check_voice
+-r requirements.txt
+funasr>=1.1
+modelscope>=1.15
+huggingface_hub>=0.23  # default download source (VOICE_HUB=hf)
+torch>=2.2
+torchaudio>=2.2

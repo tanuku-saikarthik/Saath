@@ -1,0 +1,8 @@
+.env
+**/__pycache__
+**/*.db
+backend/data
+backend/results
+web/node_modules
+web/dist
+web/dist-single

@@ -1,0 +1,33 @@
+# Render Blueprint: New + > Blueprint, pick this repo. Free plan sleeps after 15 min idle and has no disk,
+# so ping /api/health every 5 min (UptimeRobot / cron-job.org) and expect the database to reset on redeploy.
+services:
+  - type: web
+    name: saath
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: AUTO_SEED
+        value: "true"
+      - key: ENABLE_SCHEDULER
+        value: "true"
+      - key: TEST_PHONE_NUMBER
+        sync: false
+      - key: BOLNA_API_KEY
+        sync: false
+      - key: BOLNA_AGENT_ID_TE
+        sync: false
+      - key: BOLNA_AGENT_ID_HI
+        sync: false
+      - key: BOLNA_AGENT_ID_ALERT
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: SOS_NUMBER
+        sync: false
+      - key: APP_PASSWORD
+        sync: false

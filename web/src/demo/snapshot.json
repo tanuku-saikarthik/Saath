@@ -1,0 +1,2863 @@
+{
+ "/api/health": {
+  "ok": true,
+  "demo": true
+ },
+ "/api/parents": [
+  {
+   "id": 1,
+   "name": "Lakshmi",
+   "address_term": "Amma",
+   "phone": "+910000000000",
+   "language": "te",
+   "call_time": "19:00",
+   "topics": [
+    "Temple visits",
+    "Her jasmine garden",
+    "Grandson Arjun"
+   ],
+   "consent_status": "granted",
+   "child_name": "Karthik",
+   "child_phone": "",
+   "notify_kinds": [
+    "urgent",
+    "sos",
+    "drop",
+    "recurring",
+    "voice",
+    "missed"
+   ],
+   "medicines": [
+    {
+     "id": 1,
+     "name": "BP tablet",
+     "timing": "morning",
+     "reminder_time": "08:30"
+    },
+    {
+     "id": 2,
+     "name": "Sugar tablet",
+     "timing": "after dinner",
+     "reminder_time": ""
+    }
+   ]
+  }
+ ],
+ "/api/parents/1/overview": {
+  "parent": {
+   "id": 1,
+   "name": "Lakshmi",
+   "address_term": "Amma",
+   "phone": "+910000000000",
+   "language": "te",
+   "call_time": "19:00",
+   "topics": [
+    "Temple visits",
+    "Her jasmine garden",
+    "Grandson Arjun"
+   ],
+   "consent_status": "granted",
+   "child_name": "Karthik",
+   "child_phone": "",
+   "notify_kinds": [
+    "urgent",
+    "sos",
+    "drop",
+    "recurring",
+    "voice",
+    "missed"
+   ],
+   "medicines": [
+    {
+     "id": 1,
+     "name": "BP tablet",
+     "timing": "morning",
+     "reminder_time": "08:30"
+    },
+    {
+     "id": 2,
+     "name": "Sugar tablet",
+     "timing": "after dinner",
+     "reminder_time": ""
+    }
+   ]
+  },
+  "latest_call": {
+   "id": 21,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-27T19:05:00+05:30",
+   "duration_s": 210,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma says she's fine, but she isn't sleeping well and feels no one talks to her",
+   "mood_score": -0.16,
+   "mismatch": true,
+   "transferred": false,
+   "reminder_for": "",
+   "transcript": "assistant: నమస్తే అమ్మా. ఎలా ఉన్నారు?\nuser: బాగానే ఉన్నాను నాయనా.\nassistant: ఈ రోజు ఏం చేశారు?\nuser: ఏమీ లేదు. ఈ మధ్య ఎవరూ పెద్దగా మాట్లాడట్లేదు. రాత్రిళ్ళు నిద్ర సరిగా పట్టట్లేదు.\nassistant: అలా అనిపించడం సహజమే అమ్మా. సుజాత గారు వస్తుంటారా?\nuser: సుజాత కూడా ఊరు వెళ్ళింది. మాత్రలు వేసుకున్నాను, భోజనం చేశాను.",
+   "analysis": {
+    "source": "seed",
+    "text_emotions": [
+     {
+      "label": "loneliness",
+      "score": 0.5
+     },
+     {
+      "label": "worry",
+      "score": 0.5
+     },
+     {
+      "label": "fatigue",
+      "score": 0.4
+     }
+    ],
+    "text_valence": 0.0,
+    "arousal": 0.35,
+    "claimed_fine": true,
+    "evidence": [
+     {
+      "quote_original": "ఎవరూ పెద్దగా మాట్లాడట్లేదు",
+      "quote_en": "Nobody talks much these days",
+      "signal": "loneliness"
+     },
+     {
+      "quote_original": "నిద్ర సరిగా పట్టట్లేదు",
+      "quote_en": "Not sleeping well",
+      "signal": "worry"
+     }
+    ],
+    "voice_probs": {
+     "happy": 0.04,
+     "neutral": 0.18,
+     "sad": 0.6,
+     "surprised": 0.01,
+     "fearful": 0.06,
+     "angry": 0.01,
+     "disgusted": 0.0,
+     "other": 0.02,
+     "unknown": 0.02
+    },
+    "voice_valence": -0.4,
+    "voice_source": "parent_channel",
+    "voice_segments": [],
+    "mood_score": -0.16,
+    "mismatch": true,
+    "meals": {
+     "breakfast": "eaten",
+     "lunch": "eaten",
+     "dinner": "eaten",
+     "note": ""
+    },
+    "meds": [
+     {
+      "name": "BP tablet",
+      "status": "taken"
+     },
+     {
+      "name": "Sugar tablet",
+      "status": "taken"
+     }
+    ],
+    "worries": [
+     "Feels nobody talks to her much"
+    ],
+    "health_mentions": [
+     "Poor sleep"
+    ],
+    "topics": [
+     "Trouble sleeping",
+     "Sujatha away"
+    ],
+    "open_threads": [
+     "Trouble sleeping",
+     "Sujatha is out of town"
+    ],
+    "emergency": false,
+    "emergency_reason": "",
+    "headline": "Amma says she's fine, but she isn't sleeping well and feels no one talks to her",
+    "summary": "Ate breakfast, lunch, dinner. BP tablet taken; Sugar tablet taken.\nMood: quite low.\nTalked about: Trouble sleeping, Sujatha away.",
+    "transcript_en": "assistant: Namaste Amma. How are you?\nuser: I'm fine, dear.\nassistant: What did you do today?\nuser: Nothing. Nobody talks much these days. I'm not sleeping well at night.\nassistant: It's natural to feel that way, Amma. Does Sujatha garu visit?\nuser: Sujatha has gone out of town too. I took my tablets and ate.",
+    "message_delivered": false,
+    "reply_to_child": "",
+    "prosody": {
+     "source": "audio",
+     "speech_s": 70.0,
+     "pace_cps": 7.52,
+     "pause_ratio": 0.31,
+     "mean_pause_s": 0.88,
+     "loudness_db": -28.5,
+     "pitch_hz": 198.0,
+     "pitch_var_st": 1.75
+    },
+    "prosody_usual": {
+     "pace_cps": 9.4,
+     "mean_pause_s": 0.56,
+     "loudness_db": -24.0,
+     "pitch_var_st": 2.6
+    }
+   },
+   "notes": []
+  },
+  "last_scored_call": {
+   "id": 21,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-27T19:05:00+05:30",
+   "duration_s": 210,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma says she's fine, but she isn't sleeping well and feels no one talks to her",
+   "mood_score": -0.16,
+   "mismatch": true,
+   "transferred": false,
+   "reminder_for": "",
+   "transcript": "assistant: నమస్తే అమ్మా. ఎలా ఉన్నారు?\nuser: బాగానే ఉన్నాను నాయనా.\nassistant: ఈ రోజు ఏం చేశారు?\nuser: ఏమీ లేదు. ఈ మధ్య ఎవరూ పెద్దగా మాట్లాడట్లేదు. రాత్రిళ్ళు నిద్ర సరిగా పట్టట్లేదు.\nassistant: అలా అనిపించడం సహజమే అమ్మా. సుజాత గారు వస్తుంటారా?\nuser: సుజాత కూడా ఊరు వెళ్ళింది. మాత్రలు వేసుకున్నాను, భోజనం చేశాను.",
+   "analysis": {
+    "source": "seed",
+    "text_emotions": [
+     {
+      "label": "loneliness",
+      "score": 0.5
+     },
+     {
+      "label": "worry",
+      "score": 0.5
+     },
+     {
+      "label": "fatigue",
+      "score": 0.4
+     }
+    ],
+    "text_valence": 0.0,
+    "arousal": 0.35,
+    "claimed_fine": true,
+    "evidence": [
+     {
+      "quote_original": "ఎవరూ పెద్దగా మాట్లాడట్లేదు",
+      "quote_en": "Nobody talks much these days",
+      "signal": "loneliness"
+     },
+     {
+      "quote_original": "నిద్ర సరిగా పట్టట్లేదు",
+      "quote_en": "Not sleeping well",
+      "signal": "worry"
+     }
+    ],
+    "voice_probs": {
+     "happy": 0.04,
+     "neutral": 0.18,
+     "sad": 0.6,
+     "surprised": 0.01,
+     "fearful": 0.06,
+     "angry": 0.01,
+     "disgusted": 0.0,
+     "other": 0.02,
+     "unknown": 0.02
+    },
+    "voice_valence": -0.4,
+    "voice_source": "parent_channel",
+    "voice_segments": [],
+    "mood_score": -0.16,
+    "mismatch": true,
+    "meals": {
+     "breakfast": "eaten",
+     "lunch": "eaten",
+     "dinner": "eaten",
+     "note": ""
+    },
+    "meds": [
+     {
+      "name": "BP tablet",
+      "status": "taken"
+     },
+     {
+      "name": "Sugar tablet",
+      "status": "taken"
+     }
+    ],
+    "worries": [
+     "Feels nobody talks to her much"
+    ],
+    "health_mentions": [
+     "Poor sleep"
+    ],
+    "topics": [
+     "Trouble sleeping",
+     "Sujatha away"
+    ],
+    "open_threads": [
+     "Trouble sleeping",
+     "Sujatha is out of town"
+    ],
+    "emergency": false,
+    "emergency_reason": "",
+    "headline": "Amma says she's fine, but she isn't sleeping well and feels no one talks to her",
+    "summary": "Ate breakfast, lunch, dinner. BP tablet taken; Sugar tablet taken.\nMood: quite low.\nTalked about: Trouble sleeping, Sujatha away.",
+    "transcript_en": "assistant: Namaste Amma. How are you?\nuser: I'm fine, dear.\nassistant: What did you do today?\nuser: Nothing. Nobody talks much these days. I'm not sleeping well at night.\nassistant: It's natural to feel that way, Amma. Does Sujatha garu visit?\nuser: Sujatha has gone out of town too. I took my tablets and ate.",
+    "message_delivered": false,
+    "reply_to_child": "",
+    "prosody": {
+     "source": "audio",
+     "speech_s": 70.0,
+     "pace_cps": 7.52,
+     "pause_ratio": 0.31,
+     "mean_pause_s": 0.88,
+     "loudness_db": -28.5,
+     "pitch_hz": 198.0,
+     "pitch_var_st": 1.75
+    },
+    "prosody_usual": {
+     "pace_cps": 9.4,
+     "mean_pause_s": 0.56,
+     "loudness_db": -24.0,
+     "pitch_var_st": 2.6
+    }
+   },
+   "notes": []
+  },
+  "stats": {
+   "enough": true,
+   "baseline": 0.394,
+   "recent": -0.12,
+   "below": 3,
+   "delta": -0.514
+  },
+  "unseen_alerts": [
+   {
+    "id": 4,
+    "kind": "recurring",
+    "title": "Amma has sounded lonely or worried several times",
+    "reason": "Loneliness or worry came up in 3 of her last 5 calls.",
+    "talking_points": [
+     "Trouble sleeping",
+     "Sujatha is out of town",
+     "Feels nobody talks to her much"
+    ],
+    "call_id": 21,
+    "created_at": "2026-10-27T19:05:00+05:30",
+    "seen": false,
+    "notified": "",
+    "notify_error": ""
+   },
+   {
+    "id": 5,
+    "kind": "voice",
+    "title": "Amma's voice has sounded different for 3 calls",
+    "reason": "Compared with her usual, she has been speaking more slowly, pausing longer, speaking more quietly and speaking in a flatter voice. This can be tiredness, a cold, poor sleep or feeling low. It is a reason to call, not a diagnosis.",
+    "talking_points": [
+     "Ask how she has been sleeping",
+     "Ask if she has been feeling unwell or tired",
+     "Trouble sleeping"
+    ],
+    "call_id": 21,
+    "created_at": "2026-10-27T19:05:00+05:30",
+    "seen": false,
+    "notified": "",
+    "notify_error": ""
+   },
+   {
+    "id": 3,
+    "kind": "drop",
+    "title": "Amma's mood has been lower for 3 calls",
+    "reason": "Her last 3 calls averaged +0.10, against her usual +0.41. On 2 of those calls she said she was fine but sounded low.",
+    "talking_points": [
+     "Skipped dinner",
+     "Arjun's exams",
+     "Quiet house after the festival"
+    ],
+    "call_id": 19,
+    "created_at": "2026-10-25T19:05:00+05:30",
+    "seen": false,
+    "notified": "",
+    "notify_error": ""
+   },
+   {
+    "id": 1,
+    "kind": "sos",
+    "title": "Amma called Saath herself",
+    "reason": "Amma called to ask you to bring Arjun for the temple festival next week",
+    "talking_points": [
+     "Give her a call when you can",
+     "Ask what made her call"
+    ],
+    "call_id": 1,
+    "created_at": "2026-10-22T15:40:00+05:30",
+    "seen": false,
+    "notified": "",
+    "notify_error": ""
+   },
+   {
+    "id": 2,
+    "kind": "missed",
+    "title": "Amma missed tonight's check-in",
+    "reason": "The call and the retry both went unanswered.",
+    "talking_points": [
+     "Give her a quick call",
+     "Check if her phone is charged and on"
+    ],
+    "call_id": 14,
+    "created_at": "2026-10-20T19:35:00+05:30",
+    "seen": false,
+    "notified": "",
+    "notify_error": ""
+   }
+  ],
+  "next_call": {
+   "tone": "gentle",
+   "open_threads": [
+    "Trouble sleeping",
+    "Sujatha is out of town",
+    "Not sure she took her BP tablet"
+   ],
+   "meds_to_check": [],
+   "avoid_topics": []
+  }
+ },
+ "/api/parents/1/trend?days=14": {
+  "points": [
+   {
+    "call_id": 8,
+    "date": "2026-10-15T19:05:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": 0.45,
+    "text_valence": 0.55,
+    "voice_valence": 0.3,
+    "mismatch": false,
+    "alerts": []
+   },
+   {
+    "call_id": 9,
+    "date": "2026-10-16T19:05:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": 0.398,
+    "text_valence": 0.45,
+    "voice_valence": 0.32,
+    "mismatch": false,
+    "alerts": []
+   },
+   {
+    "call_id": 10,
+    "date": "2026-10-17T19:05:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": 0.5,
+    "text_valence": 0.6,
+    "voice_valence": 0.35,
+    "mismatch": false,
+    "alerts": []
+   },
+   {
+    "call_id": 11,
+    "date": "2026-10-18T19:05:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": 0.33,
+    "text_valence": 0.35,
+    "voice_valence": 0.3,
+    "mismatch": false,
+    "alerts": []
+   },
+   {
+    "call_id": 12,
+    "date": "2026-10-19T19:05:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": 0.42,
+    "text_valence": 0.5,
+    "voice_valence": 0.3,
+    "mismatch": false,
+    "alerts": []
+   },
+   {
+    "call_id": 14,
+    "date": "2026-10-20T19:35:00+05:30",
+    "status": "missed",
+    "is_seeded": true,
+    "mood": null,
+    "text_valence": null,
+    "voice_valence": null,
+    "mismatch": false,
+    "alerts": [
+     "missed"
+    ]
+   },
+   {
+    "call_id": 15,
+    "date": "2026-10-21T19:05:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": 0.368,
+    "text_valence": 0.4,
+    "voice_valence": 0.32,
+    "mismatch": false,
+    "alerts": []
+   },
+   {
+    "call_id": 1,
+    "date": "2026-10-22T15:40:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": 0.42,
+    "text_valence": 0.5,
+    "voice_valence": 0.3,
+    "mismatch": false,
+    "alerts": [
+     "sos"
+    ]
+   },
+   {
+    "call_id": 16,
+    "date": "2026-10-22T19:05:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": 0.39,
+    "text_valence": 0.45,
+    "voice_valence": 0.3,
+    "mismatch": false,
+    "alerts": []
+   },
+   {
+    "call_id": 17,
+    "date": "2026-10-23T19:05:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": 0.35,
+    "text_valence": 0.45,
+    "voice_valence": 0.2,
+    "mismatch": false,
+    "alerts": []
+   },
+   {
+    "call_id": 18,
+    "date": "2026-10-24T19:05:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": 0.01,
+    "text_valence": 0.25,
+    "voice_valence": -0.35,
+    "mismatch": true,
+    "alerts": []
+   },
+   {
+    "call_id": 19,
+    "date": "2026-10-25T19:05:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": -0.06,
+    "text_valence": 0.2,
+    "voice_valence": -0.45,
+    "mismatch": true,
+    "alerts": [
+     "drop"
+    ]
+   },
+   {
+    "call_id": 20,
+    "date": "2026-10-26T19:05:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": -0.14,
+    "text_valence": 0.1,
+    "voice_valence": -0.5,
+    "mismatch": true,
+    "alerts": []
+   },
+   {
+    "call_id": 21,
+    "date": "2026-10-27T19:05:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": -0.16,
+    "text_valence": 0.0,
+    "voice_valence": -0.4,
+    "mismatch": true,
+    "alerts": [
+     "recurring",
+     "voice"
+    ]
+   }
+  ],
+  "stats": {
+   "enough": true,
+   "baseline": 0.394,
+   "recent": -0.12,
+   "below": 3,
+   "delta": -0.514
+  }
+ },
+ "/api/parents/1/calls?limit=30": [
+  {
+   "id": 21,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-27T19:05:00+05:30",
+   "duration_s": 210,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma says she's fine, but she isn't sleeping well and feels no one talks to her",
+   "mood_score": -0.16,
+   "mismatch": true,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 7,
+   "kind": "reminder",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-27T08:30:00+05:30",
+   "duration_s": 35,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Took her BP tablet after Saath's reminder",
+   "mood_score": 0.3,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": "BP tablet"
+  },
+  {
+   "id": 20,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-26T19:05:00+05:30",
+   "duration_s": 210,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma stayed home all day and isn't sure she took her BP tablet",
+   "mood_score": -0.14,
+   "mismatch": true,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 6,
+   "kind": "reminder",
+   "attempt": 1,
+   "status": "missed",
+   "scheduled_at": "2026-10-26T08:30:00+05:30",
+   "duration_s": 0,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "",
+   "mood_score": null,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": "BP tablet"
+  },
+  {
+   "id": 19,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-25T19:05:00+05:30",
+   "duration_s": 190,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma skipped dinner and nobody called her today",
+   "mood_score": -0.06,
+   "mismatch": true,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 5,
+   "kind": "reminder",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-25T08:30:00+05:30",
+   "duration_s": 35,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Took her BP tablet after Saath's reminder",
+   "mood_score": 0.3,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": "BP tablet"
+  },
+  {
+   "id": 18,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-24T19:05:00+05:30",
+   "duration_s": 210,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma said she's fine, but the house feels quiet after the festival",
+   "mood_score": 0.01,
+   "mismatch": true,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 4,
+   "kind": "reminder",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-24T08:30:00+05:30",
+   "duration_s": 35,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Took her BP tablet after Saath's reminder",
+   "mood_score": 0.3,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": "BP tablet"
+  },
+  {
+   "id": 17,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-23T19:05:00+05:30",
+   "duration_s": 190,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "The festival went well; Amma is tired and her legs ache",
+   "mood_score": 0.35,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 3,
+   "kind": "reminder",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-23T08:30:00+05:30",
+   "duration_s": 35,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Took her BP tablet after Saath's reminder",
+   "mood_score": 0.3,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": "BP tablet"
+  },
+  {
+   "id": 16,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-22T19:05:00+05:30",
+   "duration_s": 190,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma is busy making garlands for the temple festival",
+   "mood_score": 0.39,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 1,
+   "kind": "inbound",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-22T15:40:00+05:30",
+   "duration_s": 70,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma called to ask you to bring Arjun for the temple festival next week",
+   "mood_score": 0.42,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 2,
+   "kind": "reminder",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-22T08:30:00+05:30",
+   "duration_s": 35,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Took her BP tablet after Saath's reminder",
+   "mood_score": 0.3,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": "BP tablet"
+  },
+  {
+   "id": 15,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-21T19:05:00+05:30",
+   "duration_s": 190,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma missed yesterday's call because her phone was charging; today was fine",
+   "mood_score": 0.368,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 14,
+   "kind": "retry",
+   "attempt": 2,
+   "status": "missed",
+   "scheduled_at": "2026-10-20T19:35:00+05:30",
+   "duration_s": 0,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "",
+   "mood_score": null,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 13,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "missed",
+   "scheduled_at": "2026-10-20T19:05:00+05:30",
+   "duration_s": 0,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "",
+   "mood_score": null,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 12,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-19T19:05:00+05:30",
+   "duration_s": 210,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma's knee is better and she wants you home for Sankranti",
+   "mood_score": 0.42,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 11,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-18T19:05:00+05:30",
+   "duration_s": 210,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma's knee is sore but she's eating and taking her tablets",
+   "mood_score": 0.33,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 10,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-17T19:05:00+05:30",
+   "duration_s": 190,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma was delighted after Arjun's video call",
+   "mood_score": 0.5,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 9,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-16T19:05:00+05:30",
+   "duration_s": 210,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma's jasmine bloomed and she has plans with Sujatha tomorrow",
+   "mood_score": 0.398,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 8,
+   "kind": "daily",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-15T19:05:00+05:30",
+   "duration_s": 210,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma had a peaceful temple visit and is keeping up with her tablets",
+   "mood_score": 0.45,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  }
+ ],
+ "/api/parents/1/alerts": [
+  {
+   "id": 4,
+   "kind": "recurring",
+   "title": "Amma has sounded lonely or worried several times",
+   "reason": "Loneliness or worry came up in 3 of her last 5 calls.",
+   "talking_points": [
+    "Trouble sleeping",
+    "Sujatha is out of town",
+    "Feels nobody talks to her much"
+   ],
+   "call_id": 21,
+   "created_at": "2026-10-27T19:05:00+05:30",
+   "seen": false,
+   "notified": "",
+   "notify_error": ""
+  },
+  {
+   "id": 5,
+   "kind": "voice",
+   "title": "Amma's voice has sounded different for 3 calls",
+   "reason": "Compared with her usual, she has been speaking more slowly, pausing longer, speaking more quietly and speaking in a flatter voice. This can be tiredness, a cold, poor sleep or feeling low. It is a reason to call, not a diagnosis.",
+   "talking_points": [
+    "Ask how she has been sleeping",
+    "Ask if she has been feeling unwell or tired",
+    "Trouble sleeping"
+   ],
+   "call_id": 21,
+   "created_at": "2026-10-27T19:05:00+05:30",
+   "seen": false,
+   "notified": "",
+   "notify_error": ""
+  },
+  {
+   "id": 3,
+   "kind": "drop",
+   "title": "Amma's mood has been lower for 3 calls",
+   "reason": "Her last 3 calls averaged +0.10, against her usual +0.41. On 2 of those calls she said she was fine but sounded low.",
+   "talking_points": [
+    "Skipped dinner",
+    "Arjun's exams",
+    "Quiet house after the festival"
+   ],
+   "call_id": 19,
+   "created_at": "2026-10-25T19:05:00+05:30",
+   "seen": false,
+   "notified": "",
+   "notify_error": ""
+  },
+  {
+   "id": 1,
+   "kind": "sos",
+   "title": "Amma called Saath herself",
+   "reason": "Amma called to ask you to bring Arjun for the temple festival next week",
+   "talking_points": [
+    "Give her a call when you can",
+    "Ask what made her call"
+   ],
+   "call_id": 1,
+   "created_at": "2026-10-22T15:40:00+05:30",
+   "seen": false,
+   "notified": "",
+   "notify_error": ""
+  },
+  {
+   "id": 2,
+   "kind": "missed",
+   "title": "Amma missed tonight's check-in",
+   "reason": "The call and the retry both went unanswered.",
+   "talking_points": [
+    "Give her a quick call",
+    "Check if her phone is charged and on"
+   ],
+   "call_id": 14,
+   "created_at": "2026-10-20T19:35:00+05:30",
+   "seen": false,
+   "notified": "",
+   "notify_error": ""
+  }
+ ],
+ "/api/parents/1/notes": [
+  {
+   "id": 1,
+   "text": "Tell Amma I'll call her this Sunday, and to rest her knee.",
+   "created_at": "2026-10-18T23:05:00+05:30",
+   "call_id": 12,
+   "delivered_at": "2026-10-19T19:05:00+05:30",
+   "reply": "Don't worry, my knee is better. Come home for Sankranti.",
+   "pending": false
+  }
+ ],
+ "/api/parents/1/week": {
+  "parent": {
+   "id": 1,
+   "name": "Lakshmi",
+   "address_term": "Amma"
+  },
+  "from": "2026-10-22",
+  "to": "2026-10-28",
+  "sentence": "A harder week for Amma than the one before. Saath reached her on 6 of 7 evenings. On 4 calls she said she was fine but sounded low.",
+  "evenings": [
+   {
+    "date": "2026-10-22",
+    "status": "completed",
+    "call_id": 16,
+    "mood": 0.39,
+    "mismatch": false
+   },
+   {
+    "date": "2026-10-23",
+    "status": "completed",
+    "call_id": 17,
+    "mood": 0.35,
+    "mismatch": false
+   },
+   {
+    "date": "2026-10-24",
+    "status": "completed",
+    "call_id": 18,
+    "mood": 0.01,
+    "mismatch": true
+   },
+   {
+    "date": "2026-10-25",
+    "status": "completed",
+    "call_id": 19,
+    "mood": -0.06,
+    "mismatch": true
+   },
+   {
+    "date": "2026-10-26",
+    "status": "completed",
+    "call_id": 20,
+    "mood": -0.14,
+    "mismatch": true
+   },
+   {
+    "date": "2026-10-27",
+    "status": "completed",
+    "call_id": 21,
+    "mood": -0.16,
+    "mismatch": true
+   },
+   {
+    "date": "2026-10-28",
+    "status": "none",
+    "call_id": null,
+    "mood": null,
+    "mismatch": false
+   }
+  ],
+  "reached": 6,
+  "missed": 0,
+  "mood": 0.116,
+  "mood_word": "low",
+  "mood_prev": 0.411,
+  "mood_delta": -0.295,
+  "said_fine_sounded_low": 4,
+  "medicines": [
+   {
+    "name": "BP tablet",
+    "asked": 6,
+    "taken": 5,
+    "missed": 0,
+    "unclear": 1
+   },
+   {
+    "name": "Sugar tablet",
+    "asked": 6,
+    "taken": 6,
+    "missed": 0,
+    "unclear": 0
+   }
+  ],
+  "meals_skipped": {
+   "breakfast": 0,
+   "lunch": 0,
+   "dinner": 1
+  },
+  "reminders": [
+   {
+    "name": "BP tablet",
+    "placed": 6,
+    "answered": 5,
+    "taken": 5
+   }
+  ],
+  "called_saath": 1,
+  "voice_changes": [
+   "speaking more slowly",
+   "pausing longer",
+   "speaking more quietly",
+   "speaking in a flatter voice"
+  ],
+  "top_feelings": [
+   {
+    "label": "loneliness",
+    "score": 0.271
+   },
+   {
+    "label": "fatigue",
+    "score": 0.2
+   },
+   {
+    "label": "sadness",
+    "score": 0.157
+   },
+   {
+    "label": "joy",
+    "score": 0.143
+   }
+  ],
+  "topics": [
+   "Trouble sleeping",
+   "Sujatha away",
+   "Stayed home all day",
+   "Arjun's exams",
+   "Quiet house after the festival",
+   "Temple festival",
+   "Temple festival preparations",
+   "Bringing Arjun"
+  ],
+  "alerts": {
+   "sos": 1,
+   "drop": 1,
+   "recurring": 1,
+   "voice": 1
+  },
+  "brightest": {
+   "call_id": 16,
+   "date": "2026-10-22",
+   "headline": "Amma is busy making garlands for the temple festival",
+   "mood": 0.39
+  },
+  "lowest": {
+   "call_id": 21,
+   "date": "2026-10-27",
+   "headline": "Amma says she's fine, but she isn't sleeping well and feels no one talks to her",
+   "mood": -0.16
+  },
+  "messages": []
+ },
+ "/api/calls/21": {
+  "id": 21,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-27T19:05:00+05:30",
+  "duration_s": 210,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma says she's fine, but she isn't sleeping well and feels no one talks to her",
+  "mood_score": -0.16,
+  "mismatch": true,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా. ఎలా ఉన్నారు?\nuser: బాగానే ఉన్నాను నాయనా.\nassistant: ఈ రోజు ఏం చేశారు?\nuser: ఏమీ లేదు. ఈ మధ్య ఎవరూ పెద్దగా మాట్లాడట్లేదు. రాత్రిళ్ళు నిద్ర సరిగా పట్టట్లేదు.\nassistant: అలా అనిపించడం సహజమే అమ్మా. సుజాత గారు వస్తుంటారా?\nuser: సుజాత కూడా ఊరు వెళ్ళింది. మాత్రలు వేసుకున్నాను, భోజనం చేశాను.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "loneliness",
+     "score": 0.5
+    },
+    {
+     "label": "worry",
+     "score": 0.5
+    },
+    {
+     "label": "fatigue",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.0,
+   "arousal": 0.35,
+   "claimed_fine": true,
+   "evidence": [
+    {
+     "quote_original": "ఎవరూ పెద్దగా మాట్లాడట్లేదు",
+     "quote_en": "Nobody talks much these days",
+     "signal": "loneliness"
+    },
+    {
+     "quote_original": "నిద్ర సరిగా పట్టట్లేదు",
+     "quote_en": "Not sleeping well",
+     "signal": "worry"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.04,
+    "neutral": 0.18,
+    "sad": 0.6,
+    "surprised": 0.01,
+    "fearful": 0.06,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.02,
+    "unknown": 0.02
+   },
+   "voice_valence": -0.4,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": -0.16,
+   "mismatch": true,
+   "meals": {
+    "breakfast": "eaten",
+    "lunch": "eaten",
+    "dinner": "eaten",
+    "note": ""
+   },
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    },
+    {
+     "name": "Sugar tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [
+    "Feels nobody talks to her much"
+   ],
+   "health_mentions": [
+    "Poor sleep"
+   ],
+   "topics": [
+    "Trouble sleeping",
+    "Sujatha away"
+   ],
+   "open_threads": [
+    "Trouble sleeping",
+    "Sujatha is out of town"
+   ],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma says she's fine, but she isn't sleeping well and feels no one talks to her",
+   "summary": "Ate breakfast, lunch, dinner. BP tablet taken; Sugar tablet taken.\nMood: quite low.\nTalked about: Trouble sleeping, Sujatha away.",
+   "transcript_en": "assistant: Namaste Amma. How are you?\nuser: I'm fine, dear.\nassistant: What did you do today?\nuser: Nothing. Nobody talks much these days. I'm not sleeping well at night.\nassistant: It's natural to feel that way, Amma. Does Sujatha garu visit?\nuser: Sujatha has gone out of town too. I took my tablets and ate.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 70.0,
+    "pace_cps": 7.52,
+    "pause_ratio": 0.31,
+    "mean_pause_s": 0.88,
+    "loudness_db": -28.5,
+    "pitch_hz": 198.0,
+    "pitch_var_st": 1.75
+   },
+   "prosody_usual": {
+    "pace_cps": 9.4,
+    "mean_pause_s": 0.56,
+    "loudness_db": -24.0,
+    "pitch_var_st": 2.6
+   }
+  },
+  "notes": []
+ },
+ "/api/calls/7": {
+  "id": 7,
+  "kind": "reminder",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-27T08:30:00+05:30",
+  "duration_s": 35,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Took her BP tablet after Saath's reminder",
+  "mood_score": 0.3,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "BP tablet",
+  "transcript": "assistant: నమస్తే అమ్మా, నేను సాథ్ ని. మీ BP tablet వేసుకునే సమయం అయ్యింది.\nuser: సరే నాయనా, ఇప్పుడే వేసుకుంటున్నాను.\nassistant: మంచిది అమ్మా. సాయంత్రం మాట్లాడదాం.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.3,
+   "arousal": 0.4,
+   "claimed_fine": false,
+   "evidence": [],
+   "voice_probs": {},
+   "voice_valence": null,
+   "voice_source": "",
+   "voice_segments": [],
+   "mood_score": 0.3,
+   "mismatch": false,
+   "meals": {},
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Took her BP tablet after Saath's reminder",
+   "summary": "BP tablet taken.",
+   "transcript_en": "assistant: Namaste Amma, this is Saath. It's time for your BP tablet.\nuser: Okay dear, I'm taking it now.\nassistant: Good, Amma. Let's talk this evening.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {},
+   "prosody_usual": {}
+  },
+  "notes": []
+ },
+ "/api/calls/20": {
+  "id": 20,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-26T19:05:00+05:30",
+  "duration_s": 210,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma stayed home all day and isn't sure she took her BP tablet",
+  "mood_score": -0.14,
+  "mismatch": true,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా. ఈ రోజు ఎలా గడిచింది?\nuser: బాగానే ఉన్నాను, కొంచెం అలసట అంతే. రోజంతా ఇంట్లోనే ఉన్నాను.\nassistant: మాత్రలు వేసుకున్నారా అమ్మా?\nuser: పొద్దున్న బీపీ మాత్ర వేసుకున్నానో లేదో గుర్తు లేదు.\nassistant: భోజనం?\nuser: కొంచెం తిన్నాను.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "loneliness",
+     "score": 0.55
+    },
+    {
+     "label": "fatigue",
+     "score": 0.5
+    },
+    {
+     "label": "sadness",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.1,
+   "arousal": 0.35,
+   "claimed_fine": true,
+   "evidence": [
+    {
+     "quote_original": "కొంచెం అలసట అంతే",
+     "quote_en": "Just a little tired",
+     "signal": "fatigue"
+    },
+    {
+     "quote_original": "రోజంతా ఇంట్లోనే ఉన్నాను",
+     "quote_en": "I stayed home all day",
+     "signal": "loneliness"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.04,
+    "neutral": 0.18,
+    "sad": 0.6,
+    "surprised": 0.01,
+    "fearful": 0.06,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.02,
+    "unknown": 0.02
+   },
+   "voice_valence": -0.5,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": -0.14,
+   "mismatch": true,
+   "meals": {
+    "breakfast": "unclear",
+    "lunch": "eaten",
+    "dinner": "unclear",
+    "note": "Ate only a little"
+   },
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "unclear"
+    },
+    {
+     "name": "Sugar tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [
+    "Stayed home all day"
+   ],
+   "open_threads": [
+    "Not sure she took her BP tablet"
+   ],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma stayed home all day and isn't sure she took her BP tablet",
+   "summary": "Ate lunch. BP tablet unclear; Sugar tablet taken.\nMood: quite low.\nTalked about: Stayed home all day.",
+   "transcript_en": "assistant: Namaste Amma. How did today go?\nuser: I'm fine, just a little tired. I stayed home all day.\nassistant: Did you take your tablets, Amma?\nuser: I don't remember if I took the BP tablet this morning.\nassistant: Meals?\nuser: I ate a little.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 70.0,
+    "pace_cps": 7.33,
+    "pause_ratio": 0.31,
+    "mean_pause_s": 0.9,
+    "loudness_db": -28.9,
+    "pitch_hz": 198.0,
+    "pitch_var_st": 1.77
+   },
+   "prosody_usual": {
+    "pace_cps": 9.4,
+    "mean_pause_s": 0.55,
+    "loudness_db": -24.0,
+    "pitch_var_st": 2.6
+   }
+  },
+  "notes": []
+ },
+ "/api/calls/6": {
+  "id": 6,
+  "kind": "reminder",
+  "attempt": 1,
+  "status": "missed",
+  "scheduled_at": "2026-10-26T08:30:00+05:30",
+  "duration_s": 0,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "",
+  "mood_score": null,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "BP tablet",
+  "transcript": "",
+  "analysis": null,
+  "notes": []
+ },
+ "/api/calls/19": {
+  "id": 19,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-25T19:05:00+05:30",
+  "duration_s": 190,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma skipped dinner and nobody called her today",
+  "mood_score": -0.06,
+  "mismatch": true,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా. ఈ రోజు ఎలా ఉంది?\nuser: బాగానే ఉన్నాను. ఈ రోజు వంట చేయాలనిపించలేదు, రాత్రికి ఏమీ తినలేదు.\nassistant: అయ్యో అమ్మా. కొంచెం పాలు, పండు అయినా తీసుకోండి. మాత్రలు?\nuser: వేసుకున్నాను. అర్జున్ కి పరీక్షలు, ఎవరూ ఫోన్ చేయలేదు. పర్వాలేదు, వాళ్ళకి పని ఉంటుంది.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "loneliness",
+     "score": 0.5
+    },
+    {
+     "label": "sadness",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.2,
+   "arousal": 0.35,
+   "claimed_fine": true,
+   "evidence": [
+    {
+     "quote_original": "ఎవరూ ఫోన్ చేయలేదు",
+     "quote_en": "Nobody called",
+     "signal": "loneliness"
+    },
+    {
+     "quote_original": "వంట చేయాలనిపించలేదు",
+     "quote_en": "I didn't feel like cooking",
+     "signal": "sadness"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.04,
+    "neutral": 0.18,
+    "sad": 0.6,
+    "surprised": 0.01,
+    "fearful": 0.06,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.02,
+    "unknown": 0.02
+   },
+   "voice_valence": -0.45,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": -0.06,
+   "mismatch": true,
+   "meals": {
+    "breakfast": "eaten",
+    "lunch": "eaten",
+    "dinner": "skipped",
+    "note": "Didn't feel like cooking"
+   },
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    },
+    {
+     "name": "Sugar tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [
+    "Arjun's exams"
+   ],
+   "open_threads": [
+    "Skipped dinner"
+   ],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma skipped dinner and nobody called her today",
+   "summary": "Ate breakfast, lunch; skipped dinner. BP tablet taken; Sugar tablet taken.\nMood: low.\nTalked about: Arjun's exams.",
+   "transcript_en": "assistant: Namaste Amma. How is today?\nuser: I'm fine. I didn't feel like cooking today, I haven't eaten anything tonight.\nassistant: Oh Amma. Please have at least some milk or fruit. Tablets?\nuser: I took them. Arjun has exams, nobody called. It's okay, they're busy.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 70.0,
+    "pace_cps": 7.71,
+    "pause_ratio": 0.31,
+    "mean_pause_s": 0.87,
+    "loudness_db": -28.3,
+    "pitch_hz": 198.0,
+    "pitch_var_st": 1.74
+   },
+   "prosody_usual": {
+    "pace_cps": 9.4,
+    "mean_pause_s": 0.55,
+    "loudness_db": -24.0,
+    "pitch_var_st": 2.6
+   }
+  },
+  "notes": []
+ },
+ "/api/calls/5": {
+  "id": 5,
+  "kind": "reminder",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-25T08:30:00+05:30",
+  "duration_s": 35,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Took her BP tablet after Saath's reminder",
+  "mood_score": 0.3,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "BP tablet",
+  "transcript": "assistant: నమస్తే అమ్మా, నేను సాథ్ ని. మీ BP tablet వేసుకునే సమయం అయ్యింది.\nuser: సరే నాయనా, ఇప్పుడే వేసుకుంటున్నాను.\nassistant: మంచిది అమ్మా. సాయంత్రం మాట్లాడదాం.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.3,
+   "arousal": 0.4,
+   "claimed_fine": false,
+   "evidence": [],
+   "voice_probs": {},
+   "voice_valence": null,
+   "voice_source": "",
+   "voice_segments": [],
+   "mood_score": 0.3,
+   "mismatch": false,
+   "meals": {},
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Took her BP tablet after Saath's reminder",
+   "summary": "BP tablet taken.",
+   "transcript_en": "assistant: Namaste Amma, this is Saath. It's time for your BP tablet.\nuser: Okay dear, I'm taking it now.\nassistant: Good, Amma. Let's talk this evening.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {},
+   "prosody_usual": {}
+  },
+  "notes": []
+ },
+ "/api/calls/18": {
+  "id": 18,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-24T19:05:00+05:30",
+  "duration_s": 210,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma said she's fine, but the house feels quiet after the festival",
+  "mood_score": 0.01,
+  "mismatch": true,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా. ఈ రోజు ఎలా గడిచింది?\nuser: బాగానే ఉంది... ఉత్సవం అయిపోయాక ఇల్లు నిశ్శబ్దంగా ఉంది.\nassistant: భోజనం చేశారా?\nuser: కొంచెం తిన్నాను. మాత్రలు వేసుకున్నాను.\nassistant: ఏమైనా ఆందోళనగా ఉందా?\nuser: ఏమీ లేదు, అంతా బాగానే ఉంది.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "neutral",
+     "score": 0.4
+    },
+    {
+     "label": "loneliness",
+     "score": 0.35
+    },
+    {
+     "label": "sadness",
+     "score": 0.3
+    }
+   ],
+   "text_valence": 0.25,
+   "arousal": 0.35,
+   "claimed_fine": true,
+   "evidence": [
+    {
+     "quote_original": "ఇల్లు నిశ్శబ్దంగా ఉంది",
+     "quote_en": "The house feels quiet",
+     "signal": "loneliness"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.04,
+    "neutral": 0.23,
+    "sad": 0.55,
+    "surprised": 0.01,
+    "fearful": 0.06,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.02,
+    "unknown": 0.02
+   },
+   "voice_valence": -0.35,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.01,
+   "mismatch": true,
+   "meals": {
+    "breakfast": "eaten",
+    "lunch": "eaten",
+    "dinner": "unclear",
+    "note": "Ate only a little"
+   },
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    },
+    {
+     "name": "Sugar tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [
+    "Quiet house after the festival"
+   ],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma said she's fine, but the house feels quiet after the festival",
+   "summary": "Ate breakfast, lunch. BP tablet taken; Sugar tablet taken.\nMood: low.\nTalked about: Quiet house after the festival.",
+   "transcript_en": "assistant: Namaste Amma. How did today go?\nuser: It was fine... after the festival the house feels quiet.\nassistant: Did you eat?\nuser: I ate a little. I took my tablets.\nassistant: Is anything worrying you?\nuser: Nothing, everything is fine.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.49,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.56,
+    "loudness_db": -23.8,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.63
+   },
+   "prosody_usual": {
+    "pace_cps": 9.4,
+    "mean_pause_s": 0.55,
+    "loudness_db": -24.0,
+    "pitch_var_st": 2.6
+   }
+  },
+  "notes": []
+ },
+ "/api/calls/4": {
+  "id": 4,
+  "kind": "reminder",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-24T08:30:00+05:30",
+  "duration_s": 35,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Took her BP tablet after Saath's reminder",
+  "mood_score": 0.3,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "BP tablet",
+  "transcript": "assistant: నమస్తే అమ్మా, నేను సాథ్ ని. మీ BP tablet వేసుకునే సమయం అయ్యింది.\nuser: సరే నాయనా, ఇప్పుడే వేసుకుంటున్నాను.\nassistant: మంచిది అమ్మా. సాయంత్రం మాట్లాడదాం.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.3,
+   "arousal": 0.4,
+   "claimed_fine": false,
+   "evidence": [],
+   "voice_probs": {},
+   "voice_valence": null,
+   "voice_source": "",
+   "voice_segments": [],
+   "mood_score": 0.3,
+   "mismatch": false,
+   "meals": {},
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Took her BP tablet after Saath's reminder",
+   "summary": "BP tablet taken.",
+   "transcript_en": "assistant: Namaste Amma, this is Saath. It's time for your BP tablet.\nuser: Okay dear, I'm taking it now.\nassistant: Good, Amma. Let's talk this evening.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {},
+   "prosody_usual": {}
+  },
+  "notes": []
+ },
+ "/api/calls/17": {
+  "id": 17,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-23T19:05:00+05:30",
+  "duration_s": 190,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "The festival went well; Amma is tired and her legs ache",
+  "mood_score": 0.35,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా. ఉత్సవం ఎలా జరిగింది?\nuser: ఉత్సవం బాగా జరిగింది, కానీ చాలా అలసటగా ఉంది. కాళ్ళు నొప్పులు.\nassistant: విశ్రాంతి తీసుకోండి అమ్మా. భోజనం చేశారా?\nuser: తిన్నాను, మాత్రలు కూడా.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.5
+    },
+    {
+     "label": "fatigue",
+     "score": 0.5
+    }
+   ],
+   "text_valence": 0.45,
+   "arousal": 0.5,
+   "claimed_fine": false,
+   "evidence": [
+    {
+     "quote_original": "చాలా అలసటగా ఉంది",
+     "quote_en": "I'm very tired",
+     "signal": "fatigue"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.28,
+    "neutral": 0.55,
+    "sad": 0.1,
+    "surprised": 0.03,
+    "fearful": 0.01,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.01,
+    "unknown": 0.01
+   },
+   "voice_valence": 0.2,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.35,
+   "mismatch": false,
+   "meals": {
+    "breakfast": "eaten",
+    "lunch": "eaten",
+    "dinner": "eaten",
+    "note": ""
+   },
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    },
+    {
+     "name": "Sugar tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [
+    "Leg ache from festival work"
+   ],
+   "topics": [
+    "Temple festival"
+   ],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "The festival went well; Amma is tired and her legs ache",
+   "summary": "Ate breakfast, lunch, dinner. BP tablet taken; Sugar tablet taken.\nMood: bright.\nTalked about: Temple festival.",
+   "transcript_en": "assistant: Namaste Amma. How did the festival go?\nuser: The festival went well, but I'm very tired. My legs ache.\nassistant: Please rest, Amma. Did you eat?\nuser: I ate, and took my tablets too.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.21,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.53,
+    "loudness_db": -24.4,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.54
+   },
+   "prosody_usual": {
+    "pace_cps": 9.4,
+    "mean_pause_s": 0.55,
+    "loudness_db": -24.0,
+    "pitch_var_st": 2.6
+   }
+  },
+  "notes": []
+ },
+ "/api/calls/3": {
+  "id": 3,
+  "kind": "reminder",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-23T08:30:00+05:30",
+  "duration_s": 35,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Took her BP tablet after Saath's reminder",
+  "mood_score": 0.3,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "BP tablet",
+  "transcript": "assistant: నమస్తే అమ్మా, నేను సాథ్ ని. మీ BP tablet వేసుకునే సమయం అయ్యింది.\nuser: సరే నాయనా, ఇప్పుడే వేసుకుంటున్నాను.\nassistant: మంచిది అమ్మా. సాయంత్రం మాట్లాడదాం.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.3,
+   "arousal": 0.4,
+   "claimed_fine": false,
+   "evidence": [],
+   "voice_probs": {},
+   "voice_valence": null,
+   "voice_source": "",
+   "voice_segments": [],
+   "mood_score": 0.3,
+   "mismatch": false,
+   "meals": {},
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Took her BP tablet after Saath's reminder",
+   "summary": "BP tablet taken.",
+   "transcript_en": "assistant: Namaste Amma, this is Saath. It's time for your BP tablet.\nuser: Okay dear, I'm taking it now.\nassistant: Good, Amma. Let's talk this evening.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {},
+   "prosody_usual": {}
+  },
+  "notes": []
+ },
+ "/api/calls/16": {
+  "id": 16,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-22T19:05:00+05:30",
+  "duration_s": 190,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma is busy making garlands for the temple festival",
+  "mood_score": 0.39,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా. ఈ రోజు ఏం చేశారు?\nuser: వచ్చే వారం గుడిలో ఉత్సవం ఉంది, పూలమాలలు కడుతున్నాం. చాలా పని ఉంది కానీ బాగుంది.\nassistant: చాలా బాగుంది. భోజనం, మాత్రలు?\nuser: అన్నీ అయ్యాయి.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "joy",
+     "score": 0.5
+    },
+    {
+     "label": "hope",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.45,
+   "arousal": 0.5,
+   "claimed_fine": false,
+   "evidence": [
+    {
+     "quote_original": "చాలా పని ఉంది కానీ బాగుంది",
+     "quote_en": "Lots of work but it's nice",
+     "signal": "joy"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.42,
+    "neutral": 0.45,
+    "sad": 0.05,
+    "surprised": 0.04,
+    "fearful": 0.01,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.01,
+    "unknown": 0.01
+   },
+   "voice_valence": 0.3,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.39,
+   "mismatch": false,
+   "meals": {
+    "breakfast": "eaten",
+    "lunch": "eaten",
+    "dinner": "eaten",
+    "note": ""
+   },
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    },
+    {
+     "name": "Sugar tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [
+    "Temple festival preparations"
+   ],
+   "open_threads": [
+    "Temple festival next week"
+   ],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma is busy making garlands for the temple festival",
+   "summary": "Ate breakfast, lunch, dinner. BP tablet taken; Sugar tablet taken.\nMood: bright.\nTalked about: Temple festival preparations.",
+   "transcript_en": "assistant: Namaste Amma. What did you do today?\nuser: There's a festival at the temple next week, we're making flower garlands. Lots of work but it's nice.\nassistant: That's lovely. Meals and tablets?\nuser: All done.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.4,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.55,
+    "loudness_db": -24.0,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.6
+   },
+   "prosody_usual": {
+    "pace_cps": 9.4,
+    "mean_pause_s": 0.55,
+    "loudness_db": -24.0,
+    "pitch_var_st": 2.6
+   }
+  },
+  "notes": []
+ },
+ "/api/calls/1": {
+  "id": 1,
+  "kind": "inbound",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-22T15:40:00+05:30",
+  "duration_s": 70,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma called to ask you to bring Arjun for the temple festival next week",
+  "mood_score": 0.42,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా, నేను సాథ్ ని. చెప్పండి, ఎలా ఉన్నారు? ఏమైనా సహాయం కావాలా?\nuser: ఏమీ లేదు నాయనా, బాగానే ఉన్నాను. కార్తీక్ కి ఒక మాట చెప్పు: వచ్చే వారం గుడి ఉత్సవానికి అర్జున్ ని తీసుకురమ్మను.\nassistant: తప్పకుండా చెప్తాను అమ్మా. ఇంకేమైనా?\nuser: అంతే. ఉత్సవానికి పూలమాలలు కడుతున్నాను, సాయంత్రం మాట్లాడదాం.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "joy",
+     "score": 0.5
+    },
+    {
+     "label": "hope",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.5,
+   "arousal": 0.5,
+   "claimed_fine": true,
+   "evidence": [
+    {
+     "quote_original": "అర్జున్ ని తీసుకురమ్మను",
+     "quote_en": "Ask him to bring Arjun",
+     "signal": "hope"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.42,
+    "neutral": 0.45,
+    "sad": 0.05,
+    "surprised": 0.04,
+    "fearful": 0.01,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.01,
+    "unknown": 0.01
+   },
+   "voice_valence": 0.3,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.42,
+   "mismatch": false,
+   "meals": {},
+   "meds": [],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [
+    "Temple festival",
+    "Bringing Arjun"
+   ],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma called to ask you to bring Arjun for the temple festival next week",
+   "summary": "She called Saath herself to pass on a message.\nMood: bright.",
+   "transcript_en": "assistant: Namaste Amma, this is Saath. Tell me, how are you? Do you need any help?\nuser: Nothing, dear, I'm fine. Give Karthik a message: ask him to bring Arjun for the temple festival next week.\nassistant: I'll tell him, Amma. Anything else?\nuser: That's all. I'm making garlands for the festival, let's talk in the evening.",
+   "message_delivered": false,
+   "reply_to_child": "Bring Arjun for the temple festival next week.",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.4,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.55,
+    "loudness_db": -24.0,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.6
+   },
+   "prosody_usual": {
+    "pace_cps": 9.45,
+    "mean_pause_s": 0.56,
+    "loudness_db": -23.9,
+    "pitch_var_st": 2.62
+   }
+  },
+  "notes": []
+ },
+ "/api/calls/2": {
+  "id": 2,
+  "kind": "reminder",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-22T08:30:00+05:30",
+  "duration_s": 35,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Took her BP tablet after Saath's reminder",
+  "mood_score": 0.3,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "BP tablet",
+  "transcript": "assistant: నమస్తే అమ్మా, నేను సాథ్ ని. మీ BP tablet వేసుకునే సమయం అయ్యింది.\nuser: సరే నాయనా, ఇప్పుడే వేసుకుంటున్నాను.\nassistant: మంచిది అమ్మా. సాయంత్రం మాట్లాడదాం.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.3,
+   "arousal": 0.4,
+   "claimed_fine": false,
+   "evidence": [],
+   "voice_probs": {},
+   "voice_valence": null,
+   "voice_source": "",
+   "voice_segments": [],
+   "mood_score": 0.3,
+   "mismatch": false,
+   "meals": {},
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Took her BP tablet after Saath's reminder",
+   "summary": "BP tablet taken.",
+   "transcript_en": "assistant: Namaste Amma, this is Saath. It's time for your BP tablet.\nuser: Okay dear, I'm taking it now.\nassistant: Good, Amma. Let's talk this evening.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {},
+   "prosody_usual": {}
+  },
+  "notes": []
+ },
+ "/api/calls/15": {
+  "id": 15,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-21T19:05:00+05:30",
+  "duration_s": 190,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma missed yesterday's call because her phone was charging; today was fine",
+  "mood_score": 0.368,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా. ఈ రోజు ఎలా ఉంది?\nuser: నిన్న ఫోన్ ఛార్జింగ్ లో పెట్టి మరిచిపోయాను, అందుకే ఎత్తలేదు. సారీ నాయనా.\nassistant: పర్వాలేదు అమ్మా. ఈ రోజు ఎలా గడిచింది?\nuser: బాగానే ఉంది. సుజాత వచ్చింది, కాసేపు మాట్లాడుకున్నాం. మాత్రలు, భోజనం అయ్యాయి.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.5
+    }
+   ],
+   "text_valence": 0.4,
+   "arousal": 0.5,
+   "claimed_fine": false,
+   "evidence": [
+    {
+     "quote_original": "బాగానే ఉంది",
+     "quote_en": "Fine",
+     "signal": "contentment"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.42,
+    "neutral": 0.45,
+    "sad": 0.05,
+    "surprised": 0.04,
+    "fearful": 0.01,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.01,
+    "unknown": 0.01
+   },
+   "voice_valence": 0.32,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.368,
+   "mismatch": false,
+   "meals": {
+    "breakfast": "eaten",
+    "lunch": "eaten",
+    "dinner": "eaten",
+    "note": ""
+   },
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    },
+    {
+     "name": "Sugar tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [
+    "Visit from Sujatha"
+   ],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma missed yesterday's call because her phone was charging; today was fine",
+   "summary": "Ate breakfast, lunch, dinner. BP tablet taken; Sugar tablet taken.\nMood: bright.\nTalked about: Visit from Sujatha.",
+   "transcript_en": "assistant: Namaste Amma. How is today?\nuser: Yesterday I left the phone charging and forgot, that's why I didn't pick up. Sorry, dear.\nassistant: No problem, Amma. How did today go?\nuser: Fine. Sujatha came over and we chatted for a while. Tablets and meals done.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.59,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.57,
+    "loudness_db": -23.6,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.66
+   },
+   "prosody_usual": {
+    "pace_cps": 9.4,
+    "mean_pause_s": 0.55,
+    "loudness_db": -24.0,
+    "pitch_var_st": 2.6
+   }
+  },
+  "notes": []
+ },
+ "/api/calls/14": {
+  "id": 14,
+  "kind": "retry",
+  "attempt": 2,
+  "status": "missed",
+  "scheduled_at": "2026-10-20T19:35:00+05:30",
+  "duration_s": 0,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "",
+  "mood_score": null,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "",
+  "analysis": null,
+  "notes": []
+ },
+ "/api/calls/13": {
+  "id": 13,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "missed",
+  "scheduled_at": "2026-10-20T19:05:00+05:30",
+  "duration_s": 0,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "",
+  "mood_score": null,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "",
+  "analysis": null,
+  "notes": []
+ },
+ "/api/calls/12": {
+  "id": 12,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-19T19:05:00+05:30",
+  "duration_s": 210,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma's knee is better and she wants you home for Sankranti",
+  "mood_score": 0.42,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా. మోకాలు ఎలా ఉంది?\nuser: చాలా నయం. ఈ రోజు పులిహోర చేశాను, సుజాతకి కూడా ఇచ్చాను.\nassistant: కార్తీక్ మీకు ఒక మాట చెప్పమన్నారు అమ్మా: ఈ ఆదివారం ఫోన్ చేస్తానని, మోకాలికి విశ్రాంతి ఇవ్వమని. ఆయనకు ఏమైనా చెప్పమంటారా?\nuser: వాడిని కంగారు పడొద్దని చెప్పు, మోకాలు నయమైంది. సంక్రాంతికి ఇంటికి రమ్మను.\nassistant: తప్పకుండా చెప్తాను అమ్మా. మాత్రలు వేసుకున్నారా?\nuser: వేసుకున్నాను నాయనా.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.6
+    },
+    {
+     "label": "joy",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.5,
+   "arousal": 0.5,
+   "claimed_fine": false,
+   "evidence": [
+    {
+     "quote_original": "చాలా నయం",
+     "quote_en": "Much better",
+     "signal": "contentment"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.42,
+    "neutral": 0.45,
+    "sad": 0.05,
+    "surprised": 0.04,
+    "fearful": 0.01,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.01,
+    "unknown": 0.01
+   },
+   "voice_valence": 0.3,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.42,
+   "mismatch": false,
+   "meals": {
+    "breakfast": "eaten",
+    "lunch": "eaten",
+    "dinner": "eaten",
+    "note": ""
+   },
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    },
+    {
+     "name": "Sugar tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [
+    "Cooked pulihora",
+    "Knee better",
+    "Sankranti visit"
+   ],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma's knee is better and she wants you home for Sankranti",
+   "summary": "Ate breakfast, lunch, dinner. BP tablet taken; Sugar tablet taken.\nMood: bright.\nTalked about: Cooked pulihora, Knee better, Sankranti visit.",
+   "transcript_en": "assistant: Namaste Amma. How is your knee?\nuser: Much better. I made pulihora today and gave some to Sujatha too.\nassistant: Karthik asked me to tell you, Amma: he'll call this Sunday, and to rest your knee. Would you like me to tell him anything?\nuser: Tell him not to worry, my knee is better. Ask him to come home for Sankranti.\nassistant: I'll tell him, Amma. Did you take your tablets?\nuser: I did, dear.",
+   "message_delivered": true,
+   "reply_to_child": "Don't worry, my knee is better. Come home for Sankranti.",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.49,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.56,
+    "loudness_db": -23.8,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.63
+   },
+   "prosody_usual": {}
+  },
+  "notes": [
+   {
+    "id": 1,
+    "text": "Tell Amma I'll call her this Sunday, and to rest her knee.",
+    "created_at": "2026-10-18T23:05:00+05:30",
+    "call_id": 12,
+    "delivered_at": "2026-10-19T19:05:00+05:30",
+    "reply": "Don't worry, my knee is better. Come home for Sankranti.",
+    "pending": false
+   }
+  ]
+ },
+ "/api/calls/11": {
+  "id": 11,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-18T19:05:00+05:30",
+  "duration_s": 210,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma's knee is sore but she's eating and taking her tablets",
+  "mood_score": 0.33,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా. ఈ రోజు ఎలా ఉంది?\nuser: మోకాలు కొంచెం నొప్పిగా ఉంది, అందుకే ఎక్కువ నడవలేదు.\nassistant: అయ్యో. డాక్టర్ దగ్గరికి వెళ్ళాలా?\nuser: అంత పెద్దది కాదు, నూనె రాసుకున్నాను. రెండు రోజుల్లో తగ్గుతుంది.\nassistant: మాత్రలు, భోజనం?\nuser: అన్నీ చేశాను నాయనా.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.4
+    },
+    {
+     "label": "pain",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.35,
+   "arousal": 0.5,
+   "claimed_fine": false,
+   "evidence": [
+    {
+     "quote_original": "మోకాలు కొంచెం నొప్పిగా ఉంది",
+     "quote_en": "My knee hurts a little",
+     "signal": "pain"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.42,
+    "neutral": 0.45,
+    "sad": 0.05,
+    "surprised": 0.04,
+    "fearful": 0.01,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.01,
+    "unknown": 0.01
+   },
+   "voice_valence": 0.3,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.33,
+   "mismatch": false,
+   "meals": {
+    "breakfast": "eaten",
+    "lunch": "eaten",
+    "dinner": "eaten",
+    "note": ""
+   },
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    },
+    {
+     "name": "Sugar tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [
+    "Mild knee pain"
+   ],
+   "topics": [
+    "Knee pain"
+   ],
+   "open_threads": [
+    "Knee pain"
+   ],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma's knee is sore but she's eating and taking her tablets",
+   "summary": "Ate breakfast, lunch, dinner. BP tablet taken; Sugar tablet taken.\nMood: steady.\nTalked about: Knee pain.",
+   "transcript_en": "assistant: Namaste Amma. How is today?\nuser: My knee hurts a little, so I didn't walk much.\nassistant: Oh no. Should you see a doctor?\nuser: It's not that serious, I applied oil. It'll ease in two days.\nassistant: Tablets and meals?\nuser: All done, dear.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.21,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.53,
+    "loudness_db": -24.4,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.54
+   },
+   "prosody_usual": {}
+  },
+  "notes": []
+ },
+ "/api/calls/10": {
+  "id": 10,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-17T19:05:00+05:30",
+  "duration_s": 190,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma was delighted after Arjun's video call",
+  "mood_score": 0.5,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా, ఈ రోజు ఎలా గడిచింది?\nuser: ఈ రోజు అర్జున్ వీడియో కాల్ చేశాడు. వాడి స్కూల్ డ్రామాలో రాజు వేషం వేశాడట!\nassistant: అద్భుతం అమ్మా! భోజనం చేశారా?\nuser: అన్నీ తిన్నాను, మాత్రలు కూడా వేసుకున్నాను. చాలా సంతోషంగా ఉంది నాయనా.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "joy",
+     "score": 0.7
+    },
+    {
+     "label": "love",
+     "score": 0.5
+    }
+   ],
+   "text_valence": 0.6,
+   "arousal": 0.5,
+   "claimed_fine": false,
+   "evidence": [
+    {
+     "quote_original": "చాలా సంతోషంగా ఉంది",
+     "quote_en": "I'm very happy",
+     "signal": "joy"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.42,
+    "neutral": 0.45,
+    "sad": 0.05,
+    "surprised": 0.04,
+    "fearful": 0.01,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.01,
+    "unknown": 0.01
+   },
+   "voice_valence": 0.35,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.5,
+   "mismatch": false,
+   "meals": {
+    "breakfast": "eaten",
+    "lunch": "eaten",
+    "dinner": "eaten",
+    "note": ""
+   },
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    },
+    {
+     "name": "Sugar tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [
+    "Grandson Arjun's school drama"
+   ],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma was delighted after Arjun's video call",
+   "summary": "Ate breakfast, lunch, dinner. BP tablet taken; Sugar tablet taken.\nMood: bright.\nTalked about: Grandson Arjun's school drama.",
+   "transcript_en": "assistant: Namaste Amma, how did today go?\nuser: Arjun video-called today. He played the king in his school drama!\nassistant: Wonderful, Amma! Did you eat?\nuser: I ate everything and took my tablets too. I'm very happy, dear.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.4,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.55,
+    "loudness_db": -24.0,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.6
+   },
+   "prosody_usual": {}
+  },
+  "notes": []
+ },
+ "/api/calls/9": {
+  "id": 9,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-16T19:05:00+05:30",
+  "duration_s": 210,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma's jasmine bloomed and she has plans with Sujatha tomorrow",
+  "mood_score": 0.398,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా. ఈ రోజు ఎలా ఉంది?\nuser: బాగుంది. తోటలో మల్లెపూలు పూశాయి, చూసి సంతోషమేసింది.\nassistant: ఎంత బాగుందో! భోజనం, మాత్రలు?\nuser: టిఫిన్, భోజనం రెండూ చేశాను. మాత్రలు వేసుకున్నాను.\nassistant: రేపు ఏమి చేయాలనుకుంటున్నారు?\nuser: పక్కింటి సుజాత వస్తానంది, కలిసి కూరగాయలకు వెళ్తాం.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "joy",
+     "score": 0.55
+    },
+    {
+     "label": "contentment",
+     "score": 0.5
+    }
+   ],
+   "text_valence": 0.45,
+   "arousal": 0.5,
+   "claimed_fine": false,
+   "evidence": [
+    {
+     "quote_original": "చూసి సంతోషమేసింది",
+     "quote_en": "It made me happy",
+     "signal": "joy"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.42,
+    "neutral": 0.45,
+    "sad": 0.05,
+    "surprised": 0.04,
+    "fearful": 0.01,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.01,
+    "unknown": 0.01
+   },
+   "voice_valence": 0.32,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.398,
+   "mismatch": false,
+   "meals": {
+    "breakfast": "eaten",
+    "lunch": "eaten",
+    "dinner": "eaten",
+    "note": ""
+   },
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    },
+    {
+     "name": "Sugar tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [
+    "Jasmine in the garden",
+    "Neighbour Sujatha"
+   ],
+   "open_threads": [
+    "Vegetable shopping with Sujatha"
+   ],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma's jasmine bloomed and she has plans with Sujatha tomorrow",
+   "summary": "Ate breakfast, lunch, dinner. BP tablet taken; Sugar tablet taken.\nMood: bright.\nTalked about: Jasmine in the garden, Neighbour Sujatha.",
+   "transcript_en": "assistant: Namaste Amma. How is today?\nuser: Good. The jasmine in the garden has bloomed, it made me happy.\nassistant: How lovely! Meals and tablets?\nuser: I had breakfast and lunch. I took my tablets.\nassistant: What are you planning for tomorrow?\nuser: Sujatha from next door said she'll come, we'll go for vegetables together.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.59,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.57,
+    "loudness_db": -23.6,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.66
+   },
+   "prosody_usual": {}
+  },
+  "notes": []
+ },
+ "/api/calls/8": {
+  "id": 8,
+  "kind": "daily",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-15T19:05:00+05:30",
+  "duration_s": 210,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma had a peaceful temple visit and is keeping up with her tablets",
+  "mood_score": 0.45,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా, నేను సాథ్. ఈ రోజు ఎలా గడిచింది?\nuser: బాగుంది నాయనా. పొద్దున గుడికి వెళ్ళాను, చాలా ప్రశాంతంగా ఉంది.\nassistant: చాలా బాగుంది అమ్మా. భోజనం చేశారా? మాత్రలు వేసుకున్నారా?\nuser: అన్నం తిన్నాను. బీపీ మాత్ర పొద్దున్నే వేసుకున్నాను, రాత్రి షుగర్ మాత్ర కూడా వేసుకుంటాను.\nassistant: మంచిది అమ్మా. ఏమైనా ఆందోళనగా ఉందా?\nuser: ఏమీ లేదు, అంతా బాగానే ఉంది.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.6
+    },
+    {
+     "label": "joy",
+     "score": 0.4
+    }
+   ],
+   "text_valence": 0.55,
+   "arousal": 0.5,
+   "claimed_fine": true,
+   "evidence": [
+    {
+     "quote_original": "చాలా ప్రశాంతంగా ఉంది",
+     "quote_en": "It was very peaceful",
+     "signal": "contentment"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.42,
+    "neutral": 0.45,
+    "sad": 0.05,
+    "surprised": 0.04,
+    "fearful": 0.01,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.01,
+    "unknown": 0.01
+   },
+   "voice_valence": 0.3,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.45,
+   "mismatch": false,
+   "meals": {
+    "breakfast": "eaten",
+    "lunch": "eaten",
+    "dinner": "eaten",
+    "note": ""
+   },
+   "meds": [
+    {
+     "name": "BP tablet",
+     "status": "taken"
+    },
+    {
+     "name": "Sugar tablet",
+     "status": "taken"
+    }
+   ],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [
+    "Temple visit"
+   ],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma had a peaceful temple visit and is keeping up with her tablets",
+   "summary": "Ate breakfast, lunch, dinner. BP tablet taken; Sugar tablet taken.\nMood: bright.\nTalked about: Temple visit.",
+   "transcript_en": "assistant: Namaste Amma, this is Saath. How was your day?\nuser: It was good, dear. I went to the temple in the morning, it was very peaceful.\nassistant: That's lovely, Amma. Did you eat? Did you take your tablets?\nuser: I had my meal. I took the BP tablet in the morning, and I'll take the sugar tablet tonight.\nassistant: Good, Amma. Is anything worrying you?\nuser: Nothing, everything is fine.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.31,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.54,
+    "loudness_db": -24.2,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.57
+   },
+   "prosody_usual": {}
+  },
+  "notes": []
+ }
+}
