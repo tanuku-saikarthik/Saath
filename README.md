@@ -1,4 +1,4 @@
-# Saath
+# Saathi
 
 A daily voice check-in call for elderly parents who live alone, in Telugu and Hindi. Saath calls every evening on a normal phone, scores how the parent feels from both their **words** and their **voice**, remembers mood across days, adapts the next call, and alerts the family when mood keeps dropping.
 
