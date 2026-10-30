@@ -17,6 +17,7 @@ export type Parent = {
   child_phone: string
   notify_kinds: AlertKind[]
   neighbours?: { name: string; phone: string }[]
+  bolna_sync?: string[]
   medicines: Medicine[]
 }
 export type AlertKind = 'urgent' | 'sos' | 'drop' | 'recurring' | 'voice' | 'missed'

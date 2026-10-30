@@ -344,3 +344,75 @@ def test_password_protects_family_api_but_not_her_phone_or_webhooks(monkeypatch)
     assert c.get("/api/auth/status").json()["authed"] is True
     c.post("/api/auth/logout")
     assert c.get("/api/parents").status_code == 401
+
+
+# ---- keeping Bolna's Transfer Call number in step with the app ----
+
+def _fake_agent(number):
+    import json as _j
+    return {
+        "agent_name": "Saath Telugu", "agent_type": "other", "call_summary_enabled": False,
+        "agent_welcome_message": "{opening}", "webhook_url": "https://x/webhooks/bolna",
+        "agent_prompts": {"task_1": {"system_prompt": "p"}},
+        "tasks": [{"task_type": "conversation", "tools_config": {"api_tools": {"tools": [], "tools_params": {
+            "transfer_call_x": {"method": "POST", "url": "u", "param": _j.dumps({"call_transfer_number": number, "call_sid": "%(call_sid)s"})}}}}}],
+    }
+
+
+def test_transfer_number_follows_the_app(monkeypatch):
+    from app import bolna
+    store = {"agent": _fake_agent("+919876543210")}
+    sent = []
+
+    def fake_api(method, path, body=None):
+        if method == "PUT":
+            sent.append(body)
+            store["agent"]["tasks"] = body["agent_config"]["tasks"]
+            return {"status": "updated"}
+        import copy
+        return copy.deepcopy(store["agent"])
+
+    monkeypatch.setattr(bolna, "_api", fake_api)
+    assert bolna.sync_transfer_number("a1", "9876543210", "+91 99999 11111") == "updated"
+    assert "+919999911111" in sent[0]["agent_config"]["tasks"][0]["tools_config"]["api_tools"]["tools_params"]["transfer_call_x"]["param"]
+    assert sent[0]["agent_config"]["agent_welcome_message"] == "{opening}"
+    assert bolna.sync_transfer_number("a1", "9999911111", "+91 99999 11111") == "already set"
+    # a number someone set on purpose (not the old one) is left alone
+    assert bolna.sync_transfer_number("a1", "9000000000", "+91 88888 77777").startswith("left alone")
+    assert len(sent) == 1
+
+
+def test_transfer_number_found_when_bolna_returns_an_object(monkeypatch):
+    from app import bolna
+    a = _fake_agent("+919876543210")
+    params = a["tasks"][0]["tools_config"]["api_tools"]["tools_params"]["transfer_call_x"]
+    import json as _j
+    params["param"] = _j.loads(params["param"])  # real Bolna: an object, not a string
+    a["memory_config"] = {"enabled": True}  # settings the update call doesn't take: must not be rewritten
+    monkeypatch.setattr(bolna, "_api", lambda m, p, b=None: a)
+    r = bolna.sync_transfer_number("a1", "9876543210", "9999911111")
+    assert r.startswith("change it in Bolna") and "+919876543210" in r and "+919999911111" in r
+    monkeypatch.setattr(bolna, "_api", lambda m, p, b=None: {"tasks": [{"tools_config": {}}]})
+    assert "no Transfer Call yet" in bolna.sync_transfer_number("a1", "", "9999911111") or "has no Transfer Call" in bolna.sync_transfer_number("a1", "", "9999911111")
+
+
+def test_transfer_sync_refuses_when_unsafe(monkeypatch):
+    from app import bolna
+    a = _fake_agent("+919876543210")
+    del a["agent_welcome_message"]
+    monkeypatch.setattr(bolna, "_api", lambda m, p, b=None: a)
+    assert "safely" in bolna.sync_transfer_number("a1", "9876543210", "9999911111")
+    b = _fake_agent("+919876543210")
+    del b["webhook_url"]  # a full update would silently drop the webhook that scores her calls
+    monkeypatch.setattr(bolna, "_api", lambda m, p, b_=None, _b=b: _b)
+    assert "webhook_url" in bolna.sync_transfer_number("a1", "9876543210", "9999911111")
+    c = _fake_agent("+919876543210")
+    sent = []
+    monkeypatch.setattr(bolna, "_api", lambda m, p, body=None: (sent.append(m), c)[1])
+    assert bolna.sync_transfer_number("a1", "9876543210", "9999911111", dry_run=True).startswith("would update")
+    assert "PUT" not in sent
+
+    def boom(m, p, b=None):
+        raise bolna.BolnaError("HTTP 500")
+    monkeypatch.setattr(bolna, "_api", boom)
+    assert "couldn't" in bolna.sync_transfer_number("a1", "9876543210", "9999911111")

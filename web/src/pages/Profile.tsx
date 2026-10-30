@@ -33,7 +33,7 @@ export default function Profile() {
     setMsg('')
     setErr('')
     try {
-      await api<Parent>(`/api/parents/${parent.id}`, {
+      const saved = await api<Parent>(`/api/parents/${parent.id}`, {
         method: 'PATCH',
         body: JSON.stringify({
           ...toPayload(d), medicines: medsPayload(d), consent_status: consent,
@@ -41,7 +41,7 @@ export default function Profile() {
           neighbours: neighbours.filter((n) => n.phone.trim()),
         }),
       })
-      setMsg('Changes saved. Tonight’s call will use them.')
+      setMsg(saved.bolna_sync?.length ? `Changes saved. Live-transfer number on her agents: ${saved.bolna_sync.join('; ')}.` : 'Changes saved. Tonight’s call will use them.')
       refreshParent()
     } catch (ex) {
       setErr(ex instanceof DemoActionError ? ex.message : (ex as Error).message)
@@ -106,7 +106,7 @@ export default function Profile() {
             <div className="field">
               <label htmlFor="cphone">Your phone number</label>
               <input id="cphone" type="tel" inputMode="tel" value={childPhone} placeholder="+91 98765 43210" onChange={(e) => setChildPhone(e.target.value)} />
-              <span className="hint">For alert calls, and to connect her to you in an emergency.</span>
+              <span className="hint">For alert calls, and to connect her to you in an emergency. Changing it here updates her agents too.</span>
             </div>
           </div>
           <div className="field">

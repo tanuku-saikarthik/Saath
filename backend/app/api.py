@@ -14,6 +14,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from sqlmodel import Session, select
 
+from . import bolna
 from .calls import start_call
 from .config import settings
 from .db import get_session
@@ -219,6 +220,7 @@ def update_parent(parent_id: int, body: ParentPatch, session: Session = Depends(
         setattr(p, k, v)
     session.add(p)
     family = session.get(Family, p.family_id)
+    old_child = family.child_phone if family else ""
     if family and family_fields:
         for k, v in family_fields.items():
             setattr(family, k, v)
@@ -229,7 +231,22 @@ def update_parent(parent_id: int, body: ParentPatch, session: Session = Depends(
         for m in meds:
             session.add(Medicine(parent_id=p.id, name=m["name"], timing=m.get("timing", ""), reminder_time=m.get("reminder_time", "")))
     session.commit()
-    return parent_out(session, p)
+    out = parent_out(session, p)
+    new_child = family_fields.get("child_phone")
+    if new_child and new_child != old_child and settings.bolna_enabled:
+        out["bolna_sync"] = sync_child_number(old_child, new_child)
+    return out
+
+
+def sync_child_number(old: str, new: str) -> list[str]:
+    """Update the Transfer Call destination on the Telugu and Hindi agents. One line per agent for the app to show."""
+    lines, seen = [], set()
+    for label, agent_id in (("Telugu agent", settings.BOLNA_AGENT_ID_TE), ("Hindi agent", settings.BOLNA_AGENT_ID_HI)):
+        if not agent_id or agent_id in seen:
+            continue
+        seen.add(agent_id)
+        lines.append(f"{label}: {bolna.sync_transfer_number(agent_id, old, new)}")
+    return lines
 
 
 @router.get("/api/parents/{parent_id}/overview")
