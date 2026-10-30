@@ -127,7 +127,7 @@ function Root() {
     <Shell parent={parent} unseen={unseen}>
       {demo && (
         <div className="demo-note">
-          <span>Seeded sample data. Calls and changes are off in this view.</span>
+          <span>Sample data. Calls and changes are off in this view.</span>
         </div>
       )}
       <main className="main" id="main">

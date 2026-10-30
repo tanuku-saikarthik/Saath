@@ -37,7 +37,7 @@ export function Login({ onDone }: { onDone: () => void }) {
       <p className="hint" style={{ margin: '0 0 14px' }}>A daily call that hears how she really is.</p>
       <div className="login-tabs" role="tablist" aria-label="Start here">
         <button role="tab" aria-selected={tab === 'setup'} className={tab === 'setup' ? 'on' : ''} onClick={() => setTab('setup')}>Set up</button>
-        <button role="tab" aria-selected={tab === 'seeded'} className={tab === 'seeded' ? 'on' : ''} onClick={() => setTab('seeded')}>Seeded data</button>
+        <button role="tab" aria-selected={tab === 'seeded'} className={tab === 'seeded' ? 'on' : ''} onClick={() => setTab('seeded')}>Try the demo</button>
       </div>
 
       {tab === 'setup' && (
@@ -68,11 +68,11 @@ export function Login({ onDone }: { onDone: () => void }) {
 
       {tab === 'seeded' && (
         <section className="fieldset" aria-labelledby="seed-h">
-          <h2 className="h2" id="seed-h">Explore the seeded family</h2>
+          <h2 className="h2" id="seed-h">Explore a sample family</h2>
           <p className="hint" style={{ margin: '0 0 12px' }}>
             Two weeks of sample evenings for a parent, with calls, alerts, a week view, and her phone page. Nothing here calls anyone or saves changes.
           </p>
-          <button className="btn btn-primary" type="button" onClick={seeded}>Open the seeded data</button>
+          <button className="btn btn-primary" type="button" onClick={seeded}>Open the demo</button>
         </section>
       )}
     </main>
