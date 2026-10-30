@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { anchorDate, api, DemoActionError, fmtCallTime, fmtDay, fmtDuration, fmtTime, useApi, type Call, type Overview, type Trend } from '../api'
 import { useParent } from '../App'
 import { Evenings, EveningsLegend } from '../components/Evenings'
-import { IconArrow, IconPhone, IconVoice } from '../components/Icons'
+import { IconArrow, IconCalls, IconChat, IconPhone, IconVoice, IconWeek } from '../components/Icons'
 import { MessageCard } from '../components/MessageCard'
 import { AlertCard, Basics, ErrorNote, Loading } from '../components/Pieces'
 import { moodColor, moodWord } from '../mood'
@@ -37,6 +37,36 @@ function LatestNotScored({ call, name }: { call: Call; name: string }) {
   return <p className="meta" style={{ marginTop: 8 }}>{text[call.status] ?? ''}</p>
 }
 
+
+function Track({ label, v, note }: { label: string; v: number | null; note?: string }) {
+  const pos = v === null ? 50 : Math.round(((Math.max(-1, Math.min(1, v)) + 1) / 2) * 100)
+  return (
+    <div className="svs-track">
+      <span className="svs-track-label">{label}</span>
+      <div className="svs-track-bar" role="img" aria-label={v === null ? `${label}: not measured` : `${label}: ${moodWord(v)}`}>
+        {v !== null && <i className="svs-track-dot" style={{ left: `${pos}%`, background: moodColor(v) }} />}
+      </div>
+      <span className="svs-track-note">{v === null ? note || 'Not measured' : moodWord(v)}</span>
+    </div>
+  )
+}
+
+function SaidVsSounded({ a, name, callId }: { a: NonNullable<Call['analysis']>; name: string; callId: number }) {
+  const quote = a.evidence?.find((e) => e.quote_en)?.quote_en
+  return (
+    <section className="svs blk-svs" aria-labelledby="svs-h">
+      <div className="sec-head">
+        <h2 className="h2" id="svs-h">What {name} said, and how she sounded</h2>
+        <Link to={`/calls/${callId}`} className="sec-link">Open call <IconArrow /></Link>
+      </div>
+      <Track label="Her words" v={a.text_valence} />
+      <Track label="Her voice" v={a.voice_valence} note="Voice model not on this call" />
+      {a.mismatch && <p className="svs-flag">She said she was fine, but her voice sounds lower than her words.</p>}
+      {quote && <p className="svs-quote">“{quote}”</p>}
+    </section>
+  )
+}
+
 export default function Today() {
   const { parent, setUnseen } = useParent()
   const ov = useApi<Overview>(`/api/parents/${parent.id}/overview`)
@@ -56,6 +86,11 @@ export default function Today() {
 
   const mismatchRun = trend ? trailingMismatches(trend) : 0
   const usual = compareToUsual(o)
+
+  const goMessage = () => {
+    document.getElementById('msg-h')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    setTimeout(() => document.getElementById('msg-text')?.focus({ preventScroll: true }), 350)
+  }
 
   const callNow = async () => {
     setCalling(true)
@@ -110,6 +145,40 @@ export default function Today() {
         )}
       </section>
 
+      <nav className="actions blk-actions" aria-label="What would you like to do">
+        <button type="button" className="act act-primary" onClick={callNow} disabled={calling}>
+          <span className="act-ico"><IconPhone /></span>
+          <span className="act-t">{calling ? 'Calling…' : `Call ${name}`}</span>
+          <span className="act-s">{fmtCallTime(parent.call_time)}</span>
+        </button>
+        <button type="button" className="act" onClick={goMessage}>
+          <span className="act-ico"><IconChat /></span>
+          <span className="act-t">Message</span>
+          <span className="act-s">{o.parent.child_name ? `From ${o.parent.child_name}` : 'To her'}</span>
+        </button>
+        {last ? (
+          <Link to={`/calls/${last.id}`} className="act">
+            <span className="act-ico"><IconCalls /></span>
+            <span className="act-t">Last call</span>
+            <span className="act-s">{fmtDay(last.scheduled_at, anchor)}</span>
+          </Link>
+        ) : (
+          <Link to="/calls" className="act">
+            <span className="act-ico"><IconCalls /></span>
+            <span className="act-t">Calls</span>
+            <span className="act-s">History</span>
+          </Link>
+        )}
+        <Link to="/week" className="act">
+          <span className="act-ico"><IconWeek /></span>
+          <span className="act-t">Her week</span>
+          <span className="act-s">7 evenings</span>
+        </Link>
+      </nav>
+      {callMsg && <p className="toast blk-actions" role="status">{callMsg}</p>}
+
+        {a && last && <SaidVsSounded a={a} name={name} callId={last.id} />}
+
         {trend && (
           <section className="evenings blk-strip" aria-labelledby="evenings-h">
             <div className="evenings-head">
@@ -126,25 +195,14 @@ export default function Today() {
 
         {a && (
           <section className="blk-basics" aria-labelledby="basics-h">
-            <h2 className="h2" id="basics-h">From the last call</h2>
+            <div className="sec-head">
+              <h2 className="h2" id="basics-h">From the last call</h2>
+              {last && <Link to={`/calls/${last.id}`} className="sec-link">Transcript <IconArrow /></Link>}
+            </div>
             <Basics a={a} />
           </section>
         )}
-     </div>
 
-      <aside className="today-side" aria-label="Alerts and tonight's call">
-        <section className="side-block blk-alerts" aria-labelledby="alerts-h">
-          <h2 className="h2" id="alerts-h">{o.unseen_alerts.length ? 'Needs you' : 'Alerts'}</h2>
-          {o.unseen_alerts.length === 0 && <p className="empty">Nothing needs you right now. Saath will tell you here if her mood keeps dropping or something urgent comes up.</p>}
-          {o.unseen_alerts.slice(0, 2).map((al) => (
-            <AlertCard key={al.id} alert={al} parent={parent} anchor={anchor} onSeen={() => { ov.reload(); setUnseen(Math.max(0, o.unseen_alerts.length - 1)) }} />
-          ))}
-          {o.unseen_alerts.length > 2 && <Link to="/alerts" className="btn btn-text btn-sm">{o.unseen_alerts.length - 2} more <IconArrow /></Link>}
-        </section>
-
-        <div className="blk-msg">
-          <MessageCard parent={parent} anchor={anchor} />
-        </div>
 
         <section className="nextcall blk-next" aria-labelledby="next-h">
           <h2 className="h2" id="next-h">Tonight at {fmtCallTime(parent.call_time)}</h2>
@@ -171,6 +229,22 @@ export default function Today() {
           </div>
           {callMsg && <p className="toast" role="status">{callMsg}</p>}
         </section>
+     </div>
+
+      <aside className="today-side" aria-label="Alerts and tonight's call">
+        <section className="side-block blk-alerts" aria-labelledby="alerts-h">
+          <h2 className="h2" id="alerts-h">{o.unseen_alerts.length ? 'Needs you' : 'Alerts'}</h2>
+          {o.unseen_alerts.length === 0 && <p className="empty">Nothing needs you right now. Saath will tell you here if her mood keeps dropping or something urgent comes up.</p>}
+          {o.unseen_alerts.slice(0, 2).map((al) => (
+            <AlertCard key={al.id} alert={al} parent={parent} anchor={anchor} onSeen={() => { ov.reload(); setUnseen(Math.max(0, o.unseen_alerts.length - 1)) }} />
+          ))}
+          {o.unseen_alerts.length > 2 && <Link to="/alerts" className="sec-link">{o.unseen_alerts.length - 2} more <IconArrow /></Link>}
+        </section>
+
+        <div className="blk-msg">
+          <MessageCard parent={parent} anchor={anchor} />
+        </div>
+
       </aside>
     </div>
   )

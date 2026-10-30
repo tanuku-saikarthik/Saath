@@ -17,7 +17,7 @@ from .config import settings
 from .context import build_context
 from .db import engine, init_db
 from .models import Alert, Call, CallAnalysis, CallContext, Family, Medicine, Note, Parent
-from .mood import evaluate_after_call, missed_alert, sos_alert
+from .mood import evaluate_after_call, missed_alert, sos_alert, urgent_alert_now
 from .pipeline.fusion import fuse
 
 TZ = ZoneInfo(settings.TIMEZONE)
@@ -166,6 +166,96 @@ def _seed_extras(session: Session, parent: Parent) -> None:
     session.commit()
 
 
+def _call(session: Session, parent: Parent, kind: str, when: datetime, secs: int, tr_te: str, tr_en: str, **kw) -> Call:
+    c = Call(parent_id=parent.id, kind=kind, status="completed", bolna_status="completed", scheduled_at=when,
+             duration_s=secs, transcript=tr_te, is_seeded=True, processed_at=when, **kw)
+    session.add(c)
+    session.flush()
+    return c
+
+
+def _analysis(session: Session, c: Call, when: datetime, days_ago: int, tv: float, vv: float, fine: bool, emotions, headline: str,
+              summary: str, tr_en: str, **kw) -> CallAnalysis:
+    a = CallAnalysis(
+        call_id=c.id, source="seed", text_emotions=[{"label": l, "score": s} for l, s in emotions], text_valence=tv,
+        arousal=0.5, claimed_fine=fine, voice_probs=_voice_probs(vv), voice_valence=vv, voice_source="parent_channel",
+        mood_score=fuse(tv, vv, "parent_channel", fine)[0], headline=headline, summary=summary, transcript_en=tr_en,
+        prosody=_prosody(days_ago), created_at=when, **kw,
+    )
+    session.add(a)
+    session.flush()
+    return a
+
+
+def _seed_story(session: Session, parent: Parent) -> None:
+    """The moments around the daily calls, so every part of Saath shows up in the sample history:
+    intro call, a small fall with a live transfer, a pocket-dial and the callback, and a question the child asked."""
+    # 1) Intro call, two weeks ago: she agreed to the daily calls.
+    when = _local_evening(14, 18, 30)
+    c = _call(session, parent, "intro", when, 60,
+              "assistant: నమస్తే అమ్మా, నేను సాథ్ ని. కార్తీక్ చెప్పారు. ప్రతి సాయంత్రం మీతో కాసేపు మాట్లాడొచ్చా?\nuser: సరే నాయనా, మాట్లాడు.",
+              "assistant: Namaste Amma, I'm Saath. Karthik told me about you. May I chat with you for a few minutes every evening?\nuser: Okay, dear, go ahead.")
+    _analysis(session, c, when, 14, 0.4, 0.3, False, [("contentment", 0.5)], "Amma agreed to the daily calls",
+              "She said yes to a short call every evening.", "", consent="yes")
+
+    # 2) A small fall, day 10: she calls Saath, says she's scared to get up, Saath connects her to the child live.
+    when = _local_evening(10, 17, 40)
+    tr_en = ("assistant: Namaste Amma, this is Saath. Tell me, do you need help?\nuser: Dear, I slipped near the bathroom. My knee hurts. "
+             "I'm scared to get up.\nassistant: Don't be scared, Amma. Stay where you are. I'm connecting you to Karthik right now.")
+    tr_te = ("assistant: నమస్తే అమ్మా, నేను సాథ్ ని. చెప్పండి, ఏమైనా సహాయం కావాలా?\nuser: నాయనా, బాత్రూమ్ దగ్గర జారిపడ్డాను. మోకాలు నొప్పిగా ఉంది. లేవడానికి భయంగా ఉంది.\n"
+             "assistant: భయపడకండి అమ్మా. అక్కడే ఉండండి. ఇప్పుడే కార్తీక్ తో మాట్లాడిస్తాను.")
+    c = _call(session, parent, "inbound", when, 95, tr_te, tr_en, transferred=True)
+    reason = "She slipped near the bathroom and her knee hurts. She is scared to get up."
+    _analysis(session, c, when, 10, -0.3, -0.25, False, [("fear", 0.5), ("pain", 0.5)],
+              "Amma slipped at home and Saath connected her to you", "She called Saath after a slip. Saath put her through to you straight away.\nMood: low.",
+              tr_en, emergency=True, emergency_reason=reason, health_mentions=["Slipped, sore knee"],
+              evidence=[{"quote_original": "లేవడానికి భయంగా ఉంది", "quote_en": "I'm scared to get up", "signal": "fear"}])
+    al = urgent_alert_now(session, parent, c, reason)
+    if al:
+        al.created_at, al.notified = when, "Saath connected her to you"
+
+    # 3) Pocket-dial, day 7: the call dropped before she spoke, Saath rang back, she had pressed the wrong button.
+    when = _local_evening(7, 11, 10)
+    c = Call(parent_id=parent.id, kind="inbound", status="missed", bolna_status="no-answer", scheduled_at=when, duration_s=4,
+             is_seeded=True, processed_at=when)
+    session.add(c)
+    session.flush()
+    sos_alert(session, parent, c, dropped=True)
+    back = when + timedelta(minutes=2)
+    tr_en = "assistant: Namaste Amma, this is Saath. You called a moment ago.\nuser: Oh, I pressed the wrong button, dear. I was calling Sujatha.\nassistant: No problem, Amma. Have a lovely day."
+    tr_te = "assistant: నమస్తే అమ్మా, నేను సాథ్ ని. ఇందాక మీరు ఫోన్ చేశారు.\nuser: అయ్యో, తప్పు బటన్ నొక్కాను నాయనా. సుజాతకి చేద్దామనుకున్నాను.\nassistant: పర్వాలేదు అమ్మా. మంచి రోజు గడపండి."
+    c2 = _call(session, parent, "callback", back, 30, tr_te, tr_en)
+    _analysis(session, c2, back, 7, 0.4, 0.3, False, [("contentment", 0.5)], "Amma had pressed the wrong button and was calling Sujatha",
+              "Her call dropped before she spoke, so Saath rang her back. All fine.\nMood: steady.", tr_en, topics=["Neighbour Sujatha"])
+
+    # 4) A question the child typed in the app, day 5: Saath rang her to ask it and brought back her answer.
+    when = _local_evening(5, 12, 20)
+    q, r = "Did you eat lunch, Amma? And how is the knee today?", "I had curd rice. The knee is better, don't worry."
+    tr_en = f"assistant: Namaste Amma, this is Saath. Karthik asked: {q}\nuser: {r}\nassistant: I'll tell him. Take care, Amma."
+    tr_te = ("assistant: నమస్తే అమ్మా, నేను సాథ్ ని. కార్తీక్ అడిగారు: భోజనం చేశారా అమ్మా? మోకాలు ఎలా ఉంది?\n"
+             "user: పెరుగన్నం తిన్నాను. మోకాలు తగ్గింది, ఏం ఫర్వాలేదు.\nassistant: చెప్తాను అమ్మా. జాగ్రత్త.")
+    c = _call(session, parent, "ask", when, 40, tr_te, tr_en)
+    n = Note(parent_id=parent.id, text=q, created_at=when - timedelta(minutes=6), call_id=c.id, delivered_at=when, reply=r, is_question=True)
+    session.add(n)
+    session.flush()
+    c.note_ids = [n.id]
+    session.add(c)
+    _analysis(session, c, when, 5, 0.4, 0.3, False, [("contentment", 0.5)], "Amma answered your question: she ate and her knee is better",
+              "She answered the question you sent.", tr_en, message_delivered=True, reply_to_child=r, meals={"lunch": "eaten"})
+    session.commit()
+
+
+def _age_alerts(session: Session, parent: Parent) -> None:
+    """Alerts older than two days have been dealt with; only the recent ones are still waiting for the child."""
+    cutoff = datetime.now(ZoneInfo("UTC")) - timedelta(days=2)
+    for al in session.exec(select(Alert).where(Alert.parent_id == parent.id)).all():
+        created = al.created_at if al.created_at.tzinfo else al.created_at.replace(tzinfo=ZoneInfo("UTC"))
+        if created < cutoff and al.seen_at is None:
+            al.seen_at = created + timedelta(hours=2)
+            session.add(al)
+    session.commit()
+
+
 def _voice_probs(v: float) -> dict[str, float]:
     """Plausible emotion2vec+ style distribution for a seeded voice valence (seed data only)."""
     if v >= 0.25:
@@ -224,6 +314,7 @@ def seed(do_reset: bool = False) -> int:
             session.add(Medicine(parent_id=parent.id, name=name, timing=timing, reminder_time=remind))
         session.commit()
         _seed_extras(session, parent)
+        _seed_story(session, parent)
 
         for days_ago, tv, vv, fine, emotions, transcript, transcript_en, extra in DAYS:
             when = _local_evening(days_ago)
@@ -273,6 +364,7 @@ def seed(do_reset: bool = False) -> int:
             evaluate_after_call(session, parent, c, a)
             session.commit()
 
+        _age_alerts(session, parent)
         build_context(session, parent)
         session.commit()
         n_alerts = len(session.exec(select(Alert).where(Alert.parent_id == parent.id)).all())

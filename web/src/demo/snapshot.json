@@ -27,6 +27,7 @@
     "voice",
     "missed"
    ],
+   "neighbours": [],
    "medicines": [
     {
      "id": 1,
@@ -67,6 +68,7 @@
     "voice",
     "missed"
    ],
+   "neighbours": [],
    "medicines": [
     {
      "id": 1,
@@ -83,11 +85,11 @@
    ]
   },
   "latest_call": {
-   "id": 21,
+   "id": 26,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-27T19:05:00+05:30",
+   "scheduled_at": "2026-10-29T19:05:00+05:30",
    "duration_s": 210,
    "is_seeded": true,
    "has_audio": false,
@@ -202,11 +204,11 @@
    "notes": []
   },
   "last_scored_call": {
-   "id": 21,
+   "id": 26,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-27T19:05:00+05:30",
+   "scheduled_at": "2026-10-29T19:05:00+05:30",
    "duration_s": 210,
    "is_seeded": true,
    "has_audio": false,
@@ -322,14 +324,14 @@
   },
   "stats": {
    "enough": true,
-   "baseline": 0.394,
+   "baseline": 0.379,
    "recent": -0.12,
    "below": 3,
-   "delta": -0.514
+   "delta": -0.499
   },
   "unseen_alerts": [
    {
-    "id": 4,
+    "id": 6,
     "kind": "recurring",
     "title": "Amma has sounded lonely or worried several times",
     "reason": "Loneliness or worry came up in 3 of her last 5 calls.",
@@ -338,14 +340,14 @@
      "Sujatha is out of town",
      "Feels nobody talks to her much"
     ],
-    "call_id": 21,
-    "created_at": "2026-10-27T19:05:00+05:30",
+    "call_id": 26,
+    "created_at": "2026-10-29T19:05:00+05:30",
     "seen": false,
     "notified": "",
     "notify_error": ""
    },
    {
-    "id": 5,
+    "id": 7,
     "kind": "voice",
     "title": "Amma's voice has sounded different for 3 calls",
     "reason": "Compared with her usual, she has been speaking more slowly, pausing longer, speaking more quietly and speaking in a flatter voice. This can be tiredness, a cold, poor sleep or feeling low. It is a reason to call, not a diagnosis.",
@@ -354,54 +356,24 @@
      "Ask if she has been feeling unwell or tired",
      "Trouble sleeping"
     ],
-    "call_id": 21,
-    "created_at": "2026-10-27T19:05:00+05:30",
+    "call_id": 26,
+    "created_at": "2026-10-29T19:05:00+05:30",
     "seen": false,
     "notified": "",
     "notify_error": ""
    },
    {
-    "id": 3,
+    "id": 5,
     "kind": "drop",
     "title": "Amma's mood has been lower for 3 calls",
-    "reason": "Her last 3 calls averaged +0.10, against her usual +0.41. On 2 of those calls she said she was fine but sounded low.",
+    "reason": "Her last 3 calls averaged -0.06, against her usual +0.39. On 3 of those calls she said she was fine but sounded low.",
     "talking_points": [
-     "Skipped dinner",
-     "Arjun's exams",
-     "Quiet house after the festival"
+     "Not sure she took her BP tablet",
+     "Stayed home all day",
+     "Skipped dinner"
     ],
-    "call_id": 19,
-    "created_at": "2026-10-25T19:05:00+05:30",
-    "seen": false,
-    "notified": "",
-    "notify_error": ""
-   },
-   {
-    "id": 1,
-    "kind": "sos",
-    "title": "Amma called Saath herself",
-    "reason": "Amma called to ask you to bring Arjun for the temple festival next week",
-    "talking_points": [
-     "Give her a call when you can",
-     "Ask what made her call"
-    ],
-    "call_id": 1,
-    "created_at": "2026-10-22T15:40:00+05:30",
-    "seen": false,
-    "notified": "",
-    "notify_error": ""
-   },
-   {
-    "id": 2,
-    "kind": "missed",
-    "title": "Amma missed tonight's check-in",
-    "reason": "The call and the retry both went unanswered.",
-    "talking_points": [
-     "Give her a quick call",
-     "Check if her phone is charged and on"
-    ],
-    "call_id": 14,
-    "created_at": "2026-10-20T19:35:00+05:30",
+    "call_id": 25,
+    "created_at": "2026-10-28T19:05:00+05:30",
     "seen": false,
     "notified": "",
     "notify_error": ""
@@ -421,8 +393,8 @@
  "/api/parents/1/trend?days=14": {
   "points": [
    {
-    "call_id": 8,
-    "date": "2026-10-15T19:05:00+05:30",
+    "call_id": 13,
+    "date": "2026-10-17T19:05:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": 0.45,
@@ -432,8 +404,8 @@
     "alerts": []
    },
    {
-    "call_id": 9,
-    "date": "2026-10-16T19:05:00+05:30",
+    "call_id": 14,
+    "date": "2026-10-18T19:05:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": 0.398,
@@ -443,8 +415,8 @@
     "alerts": []
    },
    {
-    "call_id": 10,
-    "date": "2026-10-17T19:05:00+05:30",
+    "call_id": 15,
+    "date": "2026-10-19T19:05:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": 0.5,
@@ -454,8 +426,21 @@
     "alerts": []
    },
    {
-    "call_id": 11,
-    "date": "2026-10-18T19:05:00+05:30",
+    "call_id": 9,
+    "date": "2026-10-20T17:40:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": -0.28,
+    "text_valence": -0.3,
+    "voice_valence": -0.25,
+    "mismatch": false,
+    "alerts": [
+     "urgent"
+    ]
+   },
+   {
+    "call_id": 16,
+    "date": "2026-10-20T19:05:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": 0.33,
@@ -465,8 +450,8 @@
     "alerts": []
    },
    {
-    "call_id": 12,
-    "date": "2026-10-19T19:05:00+05:30",
+    "call_id": 17,
+    "date": "2026-10-21T19:05:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": 0.42,
@@ -476,8 +461,8 @@
     "alerts": []
    },
    {
-    "call_id": 14,
-    "date": "2026-10-20T19:35:00+05:30",
+    "call_id": 19,
+    "date": "2026-10-22T19:35:00+05:30",
     "status": "missed",
     "is_seeded": true,
     "mood": null,
@@ -489,8 +474,32 @@
     ]
    },
    {
-    "call_id": 15,
-    "date": "2026-10-21T19:05:00+05:30",
+    "call_id": 10,
+    "date": "2026-10-23T11:10:00+05:30",
+    "status": "missed",
+    "is_seeded": true,
+    "mood": null,
+    "text_valence": null,
+    "voice_valence": null,
+    "mismatch": false,
+    "alerts": [
+     "sos"
+    ]
+   },
+   {
+    "call_id": 11,
+    "date": "2026-10-23T11:12:00+05:30",
+    "status": "completed",
+    "is_seeded": true,
+    "mood": 0.36,
+    "text_valence": 0.4,
+    "voice_valence": 0.3,
+    "mismatch": false,
+    "alerts": []
+   },
+   {
+    "call_id": 20,
+    "date": "2026-10-23T19:05:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": 0.368,
@@ -501,7 +510,7 @@
    },
    {
     "call_id": 1,
-    "date": "2026-10-22T15:40:00+05:30",
+    "date": "2026-10-24T15:40:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": 0.42,
@@ -513,8 +522,8 @@
     ]
    },
    {
-    "call_id": 16,
-    "date": "2026-10-22T19:05:00+05:30",
+    "call_id": 21,
+    "date": "2026-10-24T19:05:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": 0.39,
@@ -524,8 +533,8 @@
     "alerts": []
    },
    {
-    "call_id": 17,
-    "date": "2026-10-23T19:05:00+05:30",
+    "call_id": 22,
+    "date": "2026-10-25T19:05:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": 0.35,
@@ -535,8 +544,8 @@
     "alerts": []
    },
    {
-    "call_id": 18,
-    "date": "2026-10-24T19:05:00+05:30",
+    "call_id": 23,
+    "date": "2026-10-26T19:05:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": 0.01,
@@ -546,32 +555,32 @@
     "alerts": []
    },
    {
-    "call_id": 19,
-    "date": "2026-10-25T19:05:00+05:30",
+    "call_id": 24,
+    "date": "2026-10-27T19:05:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": -0.06,
     "text_valence": 0.2,
     "voice_valence": -0.45,
     "mismatch": true,
-    "alerts": [
-     "drop"
-    ]
+    "alerts": []
    },
    {
-    "call_id": 20,
-    "date": "2026-10-26T19:05:00+05:30",
+    "call_id": 25,
+    "date": "2026-10-28T19:05:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": -0.14,
     "text_valence": 0.1,
     "voice_valence": -0.5,
     "mismatch": true,
-    "alerts": []
+    "alerts": [
+     "drop"
+    ]
    },
    {
-    "call_id": 21,
-    "date": "2026-10-27T19:05:00+05:30",
+    "call_id": 26,
+    "date": "2026-10-29T19:05:00+05:30",
     "status": "completed",
     "is_seeded": true,
     "mood": -0.16,
@@ -586,19 +595,19 @@
   ],
   "stats": {
    "enough": true,
-   "baseline": 0.394,
+   "baseline": 0.379,
    "recent": -0.12,
    "below": 3,
-   "delta": -0.514
+   "delta": -0.499
   }
  },
  "/api/parents/1/calls?limit=30": [
   {
-   "id": 21,
+   "id": 26,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-27T19:05:00+05:30",
+   "scheduled_at": "2026-10-29T19:05:00+05:30",
    "duration_s": 210,
    "is_seeded": true,
    "has_audio": false,
@@ -614,7 +623,7 @@
    "kind": "reminder",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-27T08:30:00+05:30",
+   "scheduled_at": "2026-10-29T08:30:00+05:30",
    "duration_s": 35,
    "is_seeded": true,
    "has_audio": false,
@@ -626,11 +635,11 @@
    "reminder_for": "BP tablet"
   },
   {
-   "id": 20,
+   "id": 25,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-26T19:05:00+05:30",
+   "scheduled_at": "2026-10-28T19:05:00+05:30",
    "duration_s": 210,
    "is_seeded": true,
    "has_audio": false,
@@ -646,7 +655,7 @@
    "kind": "reminder",
    "attempt": 1,
    "status": "missed",
-   "scheduled_at": "2026-10-26T08:30:00+05:30",
+   "scheduled_at": "2026-10-28T08:30:00+05:30",
    "duration_s": 0,
    "is_seeded": true,
    "has_audio": false,
@@ -658,11 +667,11 @@
    "reminder_for": "BP tablet"
   },
   {
-   "id": 19,
+   "id": 24,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-25T19:05:00+05:30",
+   "scheduled_at": "2026-10-27T19:05:00+05:30",
    "duration_s": 190,
    "is_seeded": true,
    "has_audio": false,
@@ -678,7 +687,7 @@
    "kind": "reminder",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-25T08:30:00+05:30",
+   "scheduled_at": "2026-10-27T08:30:00+05:30",
    "duration_s": 35,
    "is_seeded": true,
    "has_audio": false,
@@ -690,11 +699,11 @@
    "reminder_for": "BP tablet"
   },
   {
-   "id": 18,
+   "id": 23,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-24T19:05:00+05:30",
+   "scheduled_at": "2026-10-26T19:05:00+05:30",
    "duration_s": 210,
    "is_seeded": true,
    "has_audio": false,
@@ -710,7 +719,7 @@
    "kind": "reminder",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-24T08:30:00+05:30",
+   "scheduled_at": "2026-10-26T08:30:00+05:30",
    "duration_s": 35,
    "is_seeded": true,
    "has_audio": false,
@@ -722,11 +731,11 @@
    "reminder_for": "BP tablet"
   },
   {
-   "id": 17,
+   "id": 22,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-23T19:05:00+05:30",
+   "scheduled_at": "2026-10-25T19:05:00+05:30",
    "duration_s": 190,
    "is_seeded": true,
    "has_audio": false,
@@ -738,11 +747,27 @@
    "reminder_for": ""
   },
   {
+   "id": 12,
+   "kind": "ask",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-25T12:20:00+05:30",
+   "duration_s": 40,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma answered your question: she ate and her knee is better",
+   "mood_score": 0.36,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
    "id": 3,
    "kind": "reminder",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-23T08:30:00+05:30",
+   "scheduled_at": "2026-10-25T08:30:00+05:30",
    "duration_s": 35,
    "is_seeded": true,
    "has_audio": false,
@@ -754,11 +779,11 @@
    "reminder_for": "BP tablet"
   },
   {
-   "id": 16,
+   "id": 21,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-22T19:05:00+05:30",
+   "scheduled_at": "2026-10-24T19:05:00+05:30",
    "duration_s": 190,
    "is_seeded": true,
    "has_audio": false,
@@ -774,7 +799,7 @@
    "kind": "inbound",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-22T15:40:00+05:30",
+   "scheduled_at": "2026-10-24T15:40:00+05:30",
    "duration_s": 70,
    "is_seeded": true,
    "has_audio": false,
@@ -790,7 +815,7 @@
    "kind": "reminder",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-22T08:30:00+05:30",
+   "scheduled_at": "2026-10-24T08:30:00+05:30",
    "duration_s": 35,
    "is_seeded": true,
    "has_audio": false,
@@ -802,11 +827,11 @@
    "reminder_for": "BP tablet"
   },
   {
-   "id": 15,
+   "id": 20,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-21T19:05:00+05:30",
+   "scheduled_at": "2026-10-23T19:05:00+05:30",
    "duration_s": 190,
    "is_seeded": true,
    "has_audio": false,
@@ -818,11 +843,43 @@
    "reminder_for": ""
   },
   {
-   "id": 14,
+   "id": 11,
+   "kind": "callback",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-23T11:12:00+05:30",
+   "duration_s": 30,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma had pressed the wrong button and was calling Sujatha",
+   "mood_score": 0.36,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 10,
+   "kind": "inbound",
+   "attempt": 1,
+   "status": "missed",
+   "scheduled_at": "2026-10-23T11:10:00+05:30",
+   "duration_s": 4,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "",
+   "mood_score": null,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
+  },
+  {
+   "id": 19,
    "kind": "retry",
    "attempt": 2,
    "status": "missed",
-   "scheduled_at": "2026-10-20T19:35:00+05:30",
+   "scheduled_at": "2026-10-22T19:35:00+05:30",
    "duration_s": 0,
    "is_seeded": true,
    "has_audio": false,
@@ -834,11 +891,11 @@
    "reminder_for": ""
   },
   {
-   "id": 13,
+   "id": 18,
    "kind": "daily",
    "attempt": 1,
    "status": "missed",
-   "scheduled_at": "2026-10-20T19:05:00+05:30",
+   "scheduled_at": "2026-10-22T19:05:00+05:30",
    "duration_s": 0,
    "is_seeded": true,
    "has_audio": false,
@@ -850,11 +907,11 @@
    "reminder_for": ""
   },
   {
-   "id": 12,
+   "id": 17,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-19T19:05:00+05:30",
+   "scheduled_at": "2026-10-21T19:05:00+05:30",
    "duration_s": 210,
    "is_seeded": true,
    "has_audio": false,
@@ -866,11 +923,11 @@
    "reminder_for": ""
   },
   {
-   "id": 11,
+   "id": 16,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-18T19:05:00+05:30",
+   "scheduled_at": "2026-10-20T19:05:00+05:30",
    "duration_s": 210,
    "is_seeded": true,
    "has_audio": false,
@@ -882,11 +939,27 @@
    "reminder_for": ""
   },
   {
-   "id": 10,
+   "id": 9,
+   "kind": "inbound",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-20T17:40:00+05:30",
+   "duration_s": 95,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma slipped at home and Saath connected her to you",
+   "mood_score": -0.28,
+   "mismatch": false,
+   "transferred": true,
+   "reminder_for": ""
+  },
+  {
+   "id": 15,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-17T19:05:00+05:30",
+   "scheduled_at": "2026-10-19T19:05:00+05:30",
    "duration_s": 190,
    "is_seeded": true,
    "has_audio": false,
@@ -898,11 +971,11 @@
    "reminder_for": ""
   },
   {
-   "id": 9,
+   "id": 14,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-16T19:05:00+05:30",
+   "scheduled_at": "2026-10-18T19:05:00+05:30",
    "duration_s": 210,
    "is_seeded": true,
    "has_audio": false,
@@ -914,11 +987,11 @@
    "reminder_for": ""
   },
   {
-   "id": 8,
+   "id": 13,
    "kind": "daily",
    "attempt": 1,
    "status": "completed",
-   "scheduled_at": "2026-10-15T19:05:00+05:30",
+   "scheduled_at": "2026-10-17T19:05:00+05:30",
    "duration_s": 210,
    "is_seeded": true,
    "has_audio": false,
@@ -928,11 +1001,27 @@
    "mismatch": false,
    "transferred": false,
    "reminder_for": ""
+  },
+  {
+   "id": 8,
+   "kind": "intro",
+   "attempt": 1,
+   "status": "completed",
+   "scheduled_at": "2026-10-16T18:30:00+05:30",
+   "duration_s": 60,
+   "is_seeded": true,
+   "has_audio": false,
+   "error": "",
+   "headline": "Amma agreed to the daily calls",
+   "mood_score": 0.36,
+   "mismatch": false,
+   "transferred": false,
+   "reminder_for": ""
   }
  ],
  "/api/parents/1/alerts": [
   {
-   "id": 4,
+   "id": 6,
    "kind": "recurring",
    "title": "Amma has sounded lonely or worried several times",
    "reason": "Loneliness or worry came up in 3 of her last 5 calls.",
@@ -941,14 +1030,14 @@
     "Sujatha is out of town",
     "Feels nobody talks to her much"
    ],
-   "call_id": 21,
-   "created_at": "2026-10-27T19:05:00+05:30",
+   "call_id": 26,
+   "created_at": "2026-10-29T19:05:00+05:30",
    "seen": false,
    "notified": "",
    "notify_error": ""
   },
   {
-   "id": 5,
+   "id": 7,
    "kind": "voice",
    "title": "Amma's voice has sounded different for 3 calls",
    "reason": "Compared with her usual, she has been speaking more slowly, pausing longer, speaking more quietly and speaking in a flatter voice. This can be tiredness, a cold, poor sleep or feeling low. It is a reason to call, not a diagnosis.",
@@ -957,24 +1046,24 @@
     "Ask if she has been feeling unwell or tired",
     "Trouble sleeping"
    ],
-   "call_id": 21,
-   "created_at": "2026-10-27T19:05:00+05:30",
+   "call_id": 26,
+   "created_at": "2026-10-29T19:05:00+05:30",
    "seen": false,
    "notified": "",
    "notify_error": ""
   },
   {
-   "id": 3,
+   "id": 5,
    "kind": "drop",
    "title": "Amma's mood has been lower for 3 calls",
-   "reason": "Her last 3 calls averaged +0.10, against her usual +0.41. On 2 of those calls she said she was fine but sounded low.",
+   "reason": "Her last 3 calls averaged -0.06, against her usual +0.39. On 3 of those calls she said she was fine but sounded low.",
    "talking_points": [
-    "Skipped dinner",
-    "Arjun's exams",
-    "Quiet house after the festival"
+    "Not sure she took her BP tablet",
+    "Stayed home all day",
+    "Skipped dinner"
    ],
-   "call_id": 19,
-   "created_at": "2026-10-25T19:05:00+05:30",
+   "call_id": 25,
+   "created_at": "2026-10-28T19:05:00+05:30",
    "seen": false,
    "notified": "",
    "notify_error": ""
@@ -989,13 +1078,28 @@
     "Ask what made her call"
    ],
    "call_id": 1,
-   "created_at": "2026-10-22T15:40:00+05:30",
-   "seen": false,
+   "created_at": "2026-10-24T15:40:00+05:30",
+   "seen": true,
    "notified": "",
    "notify_error": ""
   },
   {
-   "id": 2,
+   "id": 3,
+   "kind": "sos",
+   "title": "Amma called Saath",
+   "reason": "The call ended before she said anything. Saath is calling her back now.",
+   "talking_points": [
+    "Give her a call when you can",
+    "Ask what made her call"
+   ],
+   "call_id": 10,
+   "created_at": "2026-10-23T11:10:00+05:30",
+   "seen": true,
+   "notified": "",
+   "notify_error": ""
+  },
+  {
+   "id": 4,
    "kind": "missed",
    "title": "Amma missed tonight's check-in",
    "reason": "The call and the retry both went unanswered.",
@@ -1003,22 +1107,48 @@
     "Give her a quick call",
     "Check if her phone is charged and on"
    ],
-   "call_id": 14,
-   "created_at": "2026-10-20T19:35:00+05:30",
-   "seen": false,
+   "call_id": 19,
+   "created_at": "2026-10-22T19:35:00+05:30",
+   "seen": true,
    "notified": "",
+   "notify_error": ""
+  },
+  {
+   "id": 2,
+   "kind": "urgent",
+   "title": "Amma needs you right now",
+   "reason": "She slipped near the bathroom and her knee hurts. She is scared to get up.",
+   "talking_points": [
+    "Call her now",
+    "If you can't reach her, ask a neighbour to check in"
+   ],
+   "call_id": 9,
+   "created_at": "2026-10-20T17:40:00+05:30",
+   "seen": true,
+   "notified": "Saath connected her to you",
    "notify_error": ""
   }
  ],
  "/api/parents/1/notes": [
   {
    "id": 1,
-   "text": "Tell Amma I'll call her this Sunday, and to rest her knee.",
-   "created_at": "2026-10-18T23:05:00+05:30",
+   "text": "Did you eat lunch, Amma? And how is the knee today?",
+   "created_at": "2026-10-25T12:14:00+05:30",
    "call_id": 12,
-   "delivered_at": "2026-10-19T19:05:00+05:30",
+   "delivered_at": "2026-10-25T12:20:00+05:30",
+   "reply": "I had curd rice. The knee is better, don't worry.",
+   "pending": false,
+   "is_question": true
+  },
+  {
+   "id": 2,
+   "text": "Tell Amma I'll call her this Sunday, and to rest her knee.",
+   "created_at": "2026-10-20T23:05:00+05:30",
+   "call_id": 17,
+   "delivered_at": "2026-10-21T19:05:00+05:30",
    "reply": "Don't worry, my knee is better. Come home for Sankranti.",
-   "pending": false
+   "pending": false,
+   "is_question": false
   }
  ],
  "/api/parents/1/week": {
@@ -1027,54 +1157,54 @@
    "name": "Lakshmi",
    "address_term": "Amma"
   },
-  "from": "2026-10-22",
-  "to": "2026-10-28",
+  "from": "2026-10-24",
+  "to": "2026-10-30",
   "sentence": "A harder week for Amma than the one before. Saath reached her on 6 of 7 evenings. On 4 calls she said she was fine but sounded low.",
   "evenings": [
    {
-    "date": "2026-10-22",
+    "date": "2026-10-24",
     "status": "completed",
-    "call_id": 16,
+    "call_id": 21,
     "mood": 0.39,
     "mismatch": false
    },
    {
-    "date": "2026-10-23",
+    "date": "2026-10-25",
     "status": "completed",
-    "call_id": 17,
+    "call_id": 22,
     "mood": 0.35,
     "mismatch": false
    },
    {
-    "date": "2026-10-24",
-    "status": "completed",
-    "call_id": 18,
-    "mood": 0.01,
-    "mismatch": true
-   },
-   {
-    "date": "2026-10-25",
-    "status": "completed",
-    "call_id": 19,
-    "mood": -0.06,
-    "mismatch": true
-   },
-   {
     "date": "2026-10-26",
     "status": "completed",
-    "call_id": 20,
-    "mood": -0.14,
+    "call_id": 23,
+    "mood": 0.01,
     "mismatch": true
    },
    {
     "date": "2026-10-27",
     "status": "completed",
-    "call_id": 21,
-    "mood": -0.16,
+    "call_id": 24,
+    "mood": -0.06,
     "mismatch": true
    },
    {
     "date": "2026-10-28",
+    "status": "completed",
+    "call_id": 25,
+    "mood": -0.14,
+    "mismatch": true
+   },
+   {
+    "date": "2026-10-29",
+    "status": "completed",
+    "call_id": 26,
+    "mood": -0.16,
+    "mismatch": true
+   },
+   {
+    "date": "2026-10-30",
     "status": "none",
     "call_id": null,
     "mood": null,
@@ -1085,8 +1215,8 @@
   "missed": 0,
   "mood": 0.116,
   "mood_word": "low",
-  "mood_prev": 0.411,
-  "mood_delta": -0.295,
+  "mood_prev": 0.318,
+  "mood_delta": -0.202,
   "said_fine_sounded_low": 4,
   "medicines": [
    {
@@ -1159,25 +1289,31 @@
    "voice": 1
   },
   "brightest": {
-   "call_id": 16,
-   "date": "2026-10-22",
+   "call_id": 21,
+   "date": "2026-10-24",
    "headline": "Amma is busy making garlands for the temple festival",
    "mood": 0.39
   },
   "lowest": {
-   "call_id": 21,
-   "date": "2026-10-27",
+   "call_id": 26,
+   "date": "2026-10-29",
    "headline": "Amma says she's fine, but she isn't sleeping well and feels no one talks to her",
    "mood": -0.16
   },
-  "messages": []
+  "messages": [
+   {
+    "text": "Did you eat lunch, Amma? And how is the knee today?",
+    "reply": "I had curd rice. The knee is better, don't worry.",
+    "delivered": "2026-10-25"
+   }
+  ]
  },
- "/api/calls/21": {
-  "id": 21,
+ "/api/calls/26": {
+  "id": 26,
   "kind": "daily",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-27T19:05:00+05:30",
+  "scheduled_at": "2026-10-29T19:05:00+05:30",
   "duration_s": 210,
   "is_seeded": true,
   "has_audio": false,
@@ -1296,7 +1432,7 @@
   "kind": "reminder",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-27T08:30:00+05:30",
+  "scheduled_at": "2026-10-29T08:30:00+05:30",
   "duration_s": 35,
   "is_seeded": true,
   "has_audio": false,
@@ -1348,12 +1484,12 @@
   },
   "notes": []
  },
- "/api/calls/20": {
-  "id": 20,
+ "/api/calls/25": {
+  "id": 25,
   "kind": "daily",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-26T19:05:00+05:30",
+  "scheduled_at": "2026-10-28T19:05:00+05:30",
   "duration_s": 210,
   "is_seeded": true,
   "has_audio": false,
@@ -1466,7 +1602,7 @@
   "kind": "reminder",
   "attempt": 1,
   "status": "missed",
-  "scheduled_at": "2026-10-26T08:30:00+05:30",
+  "scheduled_at": "2026-10-28T08:30:00+05:30",
   "duration_s": 0,
   "is_seeded": true,
   "has_audio": false,
@@ -1480,12 +1616,12 @@
   "analysis": null,
   "notes": []
  },
- "/api/calls/19": {
-  "id": 19,
+ "/api/calls/24": {
+  "id": 24,
   "kind": "daily",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-25T19:05:00+05:30",
+  "scheduled_at": "2026-10-27T19:05:00+05:30",
   "duration_s": 190,
   "is_seeded": true,
   "has_audio": false,
@@ -1594,7 +1730,7 @@
   "kind": "reminder",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-25T08:30:00+05:30",
+  "scheduled_at": "2026-10-27T08:30:00+05:30",
   "duration_s": 35,
   "is_seeded": true,
   "has_audio": false,
@@ -1646,12 +1782,12 @@
   },
   "notes": []
  },
- "/api/calls/18": {
-  "id": 18,
+ "/api/calls/23": {
+  "id": 23,
   "kind": "daily",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-24T19:05:00+05:30",
+  "scheduled_at": "2026-10-26T19:05:00+05:30",
   "duration_s": 210,
   "is_seeded": true,
   "has_audio": false,
@@ -1757,7 +1893,7 @@
   "kind": "reminder",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-24T08:30:00+05:30",
+  "scheduled_at": "2026-10-26T08:30:00+05:30",
   "duration_s": 35,
   "is_seeded": true,
   "has_audio": false,
@@ -1809,12 +1945,12 @@
   },
   "notes": []
  },
- "/api/calls/17": {
-  "id": 17,
+ "/api/calls/22": {
+  "id": 22,
   "kind": "daily",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-23T19:05:00+05:30",
+  "scheduled_at": "2026-10-25T19:05:00+05:30",
   "duration_s": 190,
   "is_seeded": true,
   "has_audio": false,
@@ -1913,12 +2049,96 @@
   },
   "notes": []
  },
+ "/api/calls/12": {
+  "id": 12,
+  "kind": "ask",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-25T12:20:00+05:30",
+  "duration_s": 40,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma answered your question: she ate and her knee is better",
+  "mood_score": 0.36,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా, నేను సాథ్ ని. కార్తీక్ అడిగారు: భోజనం చేశారా అమ్మా? మోకాలు ఎలా ఉంది?\nuser: పెరుగన్నం తిన్నాను. మోకాలు తగ్గింది, ఏం ఫర్వాలేదు.\nassistant: చెప్తాను అమ్మా. జాగ్రత్త.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.5
+    }
+   ],
+   "text_valence": 0.4,
+   "arousal": 0.5,
+   "claimed_fine": false,
+   "evidence": [],
+   "voice_probs": {
+    "happy": 0.42,
+    "neutral": 0.45,
+    "sad": 0.05,
+    "surprised": 0.04,
+    "fearful": 0.01,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.01,
+    "unknown": 0.01
+   },
+   "voice_valence": 0.3,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.36,
+   "mismatch": false,
+   "meals": {
+    "lunch": "eaten"
+   },
+   "meds": [],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma answered your question: she ate and her knee is better",
+   "summary": "She answered the question you sent.",
+   "transcript_en": "assistant: Namaste Amma, this is Saath. Karthik asked: Did you eat lunch, Amma? And how is the knee today?\nuser: I had curd rice. The knee is better, don't worry.\nassistant: I'll tell him. Take care, Amma.",
+   "message_delivered": true,
+   "reply_to_child": "I had curd rice. The knee is better, don't worry.",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.21,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.53,
+    "loudness_db": -24.4,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.54
+   },
+   "prosody_usual": {}
+  },
+  "notes": [
+   {
+    "id": 1,
+    "text": "Did you eat lunch, Amma? And how is the knee today?",
+    "created_at": "2026-10-25T12:14:00+05:30",
+    "call_id": 12,
+    "delivered_at": "2026-10-25T12:20:00+05:30",
+    "reply": "I had curd rice. The knee is better, don't worry.",
+    "pending": false,
+    "is_question": true
+   }
+  ]
+ },
  "/api/calls/3": {
   "id": 3,
   "kind": "reminder",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-23T08:30:00+05:30",
+  "scheduled_at": "2026-10-25T08:30:00+05:30",
   "duration_s": 35,
   "is_seeded": true,
   "has_audio": false,
@@ -1970,12 +2190,12 @@
   },
   "notes": []
  },
- "/api/calls/16": {
-  "id": 16,
+ "/api/calls/21": {
+  "id": 21,
   "kind": "daily",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-22T19:05:00+05:30",
+  "scheduled_at": "2026-10-24T19:05:00+05:30",
   "duration_s": 190,
   "is_seeded": true,
   "has_audio": false,
@@ -2079,7 +2299,7 @@
   "kind": "inbound",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-22T15:40:00+05:30",
+  "scheduled_at": "2026-10-24T15:40:00+05:30",
   "duration_s": 70,
   "is_seeded": true,
   "has_audio": false,
@@ -2168,7 +2388,7 @@
   "kind": "reminder",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-22T08:30:00+05:30",
+  "scheduled_at": "2026-10-24T08:30:00+05:30",
   "duration_s": 35,
   "is_seeded": true,
   "has_audio": false,
@@ -2220,12 +2440,12 @@
   },
   "notes": []
  },
- "/api/calls/15": {
-  "id": 15,
+ "/api/calls/20": {
+  "id": 20,
   "kind": "daily",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-21T19:05:00+05:30",
+  "scheduled_at": "2026-10-23T19:05:00+05:30",
   "duration_s": 190,
   "is_seeded": true,
   "has_audio": false,
@@ -2318,12 +2538,109 @@
   },
   "notes": []
  },
- "/api/calls/14": {
-  "id": 14,
+ "/api/calls/11": {
+  "id": 11,
+  "kind": "callback",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-23T11:12:00+05:30",
+  "duration_s": 30,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma had pressed the wrong button and was calling Sujatha",
+  "mood_score": 0.36,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా, నేను సాథ్ ని. ఇందాక మీరు ఫోన్ చేశారు.\nuser: అయ్యో, తప్పు బటన్ నొక్కాను నాయనా. సుజాతకి చేద్దామనుకున్నాను.\nassistant: పర్వాలేదు అమ్మా. మంచి రోజు గడపండి.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.5
+    }
+   ],
+   "text_valence": 0.4,
+   "arousal": 0.5,
+   "claimed_fine": false,
+   "evidence": [],
+   "voice_probs": {
+    "happy": 0.42,
+    "neutral": 0.45,
+    "sad": 0.05,
+    "surprised": 0.04,
+    "fearful": 0.01,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.01,
+    "unknown": 0.01
+   },
+   "voice_valence": 0.3,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.36,
+   "mismatch": false,
+   "meals": {},
+   "meds": [],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [
+    "Neighbour Sujatha"
+   ],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma had pressed the wrong button and was calling Sujatha",
+   "summary": "Her call dropped before she spoke, so Saath rang her back. All fine.\nMood: steady.",
+   "transcript_en": "assistant: Namaste Amma, this is Saath. You called a moment ago.\nuser: Oh, I pressed the wrong button, dear. I was calling Sujatha.\nassistant: No problem, Amma. Have a lovely day.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.59,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.57,
+    "loudness_db": -23.6,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.66
+   },
+   "prosody_usual": {
+    "pace_cps": 9.36,
+    "mean_pause_s": 0.55,
+    "loudness_db": -24.1,
+    "pitch_var_st": 2.58
+   }
+  },
+  "notes": []
+ },
+ "/api/calls/10": {
+  "id": 10,
+  "kind": "inbound",
+  "attempt": 1,
+  "status": "missed",
+  "scheduled_at": "2026-10-23T11:10:00+05:30",
+  "duration_s": 4,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "",
+  "mood_score": null,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "",
+  "analysis": null,
+  "notes": []
+ },
+ "/api/calls/19": {
+  "id": 19,
   "kind": "retry",
   "attempt": 2,
   "status": "missed",
-  "scheduled_at": "2026-10-20T19:35:00+05:30",
+  "scheduled_at": "2026-10-22T19:35:00+05:30",
   "duration_s": 0,
   "is_seeded": true,
   "has_audio": false,
@@ -2337,12 +2654,12 @@
   "analysis": null,
   "notes": []
  },
- "/api/calls/13": {
-  "id": 13,
+ "/api/calls/18": {
+  "id": 18,
   "kind": "daily",
   "attempt": 1,
   "status": "missed",
-  "scheduled_at": "2026-10-20T19:05:00+05:30",
+  "scheduled_at": "2026-10-22T19:05:00+05:30",
   "duration_s": 0,
   "is_seeded": true,
   "has_audio": false,
@@ -2356,12 +2673,12 @@
   "analysis": null,
   "notes": []
  },
- "/api/calls/12": {
-  "id": 12,
+ "/api/calls/17": {
+  "id": 17,
   "kind": "daily",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-19T19:05:00+05:30",
+  "scheduled_at": "2026-10-21T19:05:00+05:30",
   "duration_s": 210,
   "is_seeded": true,
   "has_audio": false,
@@ -2451,26 +2768,32 @@
     "pitch_hz": 206.0,
     "pitch_var_st": 2.63
    },
-   "prosody_usual": {}
+   "prosody_usual": {
+    "pace_cps": 9.31,
+    "mean_pause_s": 0.54,
+    "loudness_db": -24.2,
+    "pitch_var_st": 2.57
+   }
   },
   "notes": [
    {
-    "id": 1,
+    "id": 2,
     "text": "Tell Amma I'll call her this Sunday, and to rest her knee.",
-    "created_at": "2026-10-18T23:05:00+05:30",
-    "call_id": 12,
-    "delivered_at": "2026-10-19T19:05:00+05:30",
+    "created_at": "2026-10-20T23:05:00+05:30",
+    "call_id": 17,
+    "delivered_at": "2026-10-21T19:05:00+05:30",
     "reply": "Don't worry, my knee is better. Come home for Sankranti.",
-    "pending": false
+    "pending": false,
+    "is_question": false
    }
   ]
  },
- "/api/calls/11": {
-  "id": 11,
+ "/api/calls/16": {
+  "id": 16,
   "kind": "daily",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-18T19:05:00+05:30",
+  "scheduled_at": "2026-10-20T19:05:00+05:30",
   "duration_s": 210,
   "is_seeded": true,
   "has_audio": false,
@@ -2566,12 +2889,95 @@
   },
   "notes": []
  },
- "/api/calls/10": {
-  "id": 10,
+ "/api/calls/9": {
+  "id": 9,
+  "kind": "inbound",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-20T17:40:00+05:30",
+  "duration_s": 95,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma slipped at home and Saath connected her to you",
+  "mood_score": -0.28,
+  "mismatch": false,
+  "transferred": true,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా, నేను సాథ్ ని. చెప్పండి, ఏమైనా సహాయం కావాలా?\nuser: నాయనా, బాత్రూమ్ దగ్గర జారిపడ్డాను. మోకాలు నొప్పిగా ఉంది. లేవడానికి భయంగా ఉంది.\nassistant: భయపడకండి అమ్మా. అక్కడే ఉండండి. ఇప్పుడే కార్తీక్ తో మాట్లాడిస్తాను.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "fear",
+     "score": 0.5
+    },
+    {
+     "label": "pain",
+     "score": 0.5
+    }
+   ],
+   "text_valence": -0.3,
+   "arousal": 0.5,
+   "claimed_fine": false,
+   "evidence": [
+    {
+     "quote_original": "లేవడానికి భయంగా ఉంది",
+     "quote_en": "I'm scared to get up",
+     "signal": "fear"
+    }
+   ],
+   "voice_probs": {
+    "happy": 0.04,
+    "neutral": 0.33,
+    "sad": 0.45,
+    "surprised": 0.01,
+    "fearful": 0.06,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.02,
+    "unknown": 0.02
+   },
+   "voice_valence": -0.25,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": -0.28,
+   "mismatch": false,
+   "meals": {},
+   "meds": [],
+   "worries": [],
+   "health_mentions": [
+    "Slipped, sore knee"
+   ],
+   "topics": [],
+   "open_threads": [],
+   "emergency": true,
+   "emergency_reason": "She slipped near the bathroom and her knee hurts. She is scared to get up.",
+   "headline": "Amma slipped at home and Saath connected her to you",
+   "summary": "She called Saath after a slip. Saath put her through to you straight away.\nMood: low.",
+   "transcript_en": "assistant: Namaste Amma, this is Saath. Tell me, do you need help?\nuser: Dear, I slipped near the bathroom. My knee hurts. I'm scared to get up.\nassistant: Don't be scared, Amma. Stay where you are. I'm connecting you to Karthik right now.",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.21,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.53,
+    "loudness_db": -24.4,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.54
+   },
+   "prosody_usual": {}
+  },
+  "notes": []
+ },
+ "/api/calls/15": {
+  "id": 15,
   "kind": "daily",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-17T19:05:00+05:30",
+  "scheduled_at": "2026-10-19T19:05:00+05:30",
   "duration_s": 190,
   "is_seeded": true,
   "has_audio": false,
@@ -2663,12 +3069,12 @@
   },
   "notes": []
  },
- "/api/calls/9": {
-  "id": 9,
+ "/api/calls/14": {
+  "id": 14,
   "kind": "daily",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-16T19:05:00+05:30",
+  "scheduled_at": "2026-10-18T19:05:00+05:30",
   "duration_s": 210,
   "is_seeded": true,
   "has_audio": false,
@@ -2763,12 +3169,12 @@
   },
   "notes": []
  },
- "/api/calls/8": {
-  "id": 8,
+ "/api/calls/13": {
+  "id": 13,
   "kind": "daily",
   "attempt": 1,
   "status": "completed",
-  "scheduled_at": "2026-10-15T19:05:00+05:30",
+  "scheduled_at": "2026-10-17T19:05:00+05:30",
   "duration_s": 210,
   "is_seeded": true,
   "has_audio": false,
@@ -2855,6 +3261,77 @@
     "loudness_db": -24.2,
     "pitch_hz": 206.0,
     "pitch_var_st": 2.57
+   },
+   "prosody_usual": {}
+  },
+  "notes": []
+ },
+ "/api/calls/8": {
+  "id": 8,
+  "kind": "intro",
+  "attempt": 1,
+  "status": "completed",
+  "scheduled_at": "2026-10-16T18:30:00+05:30",
+  "duration_s": 60,
+  "is_seeded": true,
+  "has_audio": false,
+  "error": "",
+  "headline": "Amma agreed to the daily calls",
+  "mood_score": 0.36,
+  "mismatch": false,
+  "transferred": false,
+  "reminder_for": "",
+  "transcript": "assistant: నమస్తే అమ్మా, నేను సాథ్ ని. కార్తీక్ చెప్పారు. ప్రతి సాయంత్రం మీతో కాసేపు మాట్లాడొచ్చా?\nuser: సరే నాయనా, మాట్లాడు.",
+  "analysis": {
+   "source": "seed",
+   "text_emotions": [
+    {
+     "label": "contentment",
+     "score": 0.5
+    }
+   ],
+   "text_valence": 0.4,
+   "arousal": 0.5,
+   "claimed_fine": false,
+   "evidence": [],
+   "voice_probs": {
+    "happy": 0.42,
+    "neutral": 0.45,
+    "sad": 0.05,
+    "surprised": 0.04,
+    "fearful": 0.01,
+    "angry": 0.01,
+    "disgusted": 0.0,
+    "other": 0.01,
+    "unknown": 0.01
+   },
+   "voice_valence": 0.3,
+   "voice_source": "parent_channel",
+   "voice_segments": [],
+   "mood_score": 0.36,
+   "mismatch": false,
+   "meals": {},
+   "meds": [],
+   "worries": [],
+   "health_mentions": [],
+   "topics": [],
+   "open_threads": [],
+   "emergency": false,
+   "emergency_reason": "",
+   "headline": "Amma agreed to the daily calls",
+   "summary": "She said yes to a short call every evening.",
+   "transcript_en": "",
+   "message_delivered": false,
+   "reply_to_child": "",
+   "prosody": {
+    "source": "audio",
+    "speech_s": 80.0,
+    "pace_cps": 9.49,
+    "pause_ratio": 0.2,
+    "mean_pause_s": 0.56,
+    "loudness_db": -23.8,
+    "pitch_hz": 206.0,
+    "pitch_var_st": 2.63
    },
    "prosody_usual": {}
   },

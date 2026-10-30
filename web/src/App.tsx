@@ -41,6 +41,7 @@ function Shell({ children, parent, unseen }: { children: React.ReactNode; parent
           <nav className="topnav" aria-label="Main">
             {nav.map((n) => (
               <NavLink key={n.to} to={n.to} end={n.to === '/'} className={({ isActive }) => (isActive ? 'active' : '')}>
+                <span className="nav-ico" aria-hidden="true">{n.icon}</span>
                 {n.label}
                 {n.to === '/alerts' && unseen > 0 && <span className="badge-dot" style={{ marginLeft: 6 }}>{unseen}</span>}
               </NavLink>
@@ -73,6 +74,11 @@ function ScrollTop() {
     window.scrollTo(0, 0)
   }, [pathname])
   return null
+}
+
+function Page({ children }: { children: React.ReactNode }) {
+  const { pathname } = useLocation()
+  return <div key={pathname} className="page">{children}</div>
 }
 
 function Gate() {
@@ -134,6 +140,7 @@ function Root() {
         )}
         {state === 'ready' && parent && (
           <ParentCtx.Provider value={{ parent, demo, refreshParent: load, unseen, setUnseen }}>
+            <Page>
             <Routes>
               <Route path="/" element={<Today />} />
               <Route path="/calls" element={<Calls />} />
@@ -145,6 +152,7 @@ function Root() {
               <Route path="/week" element={<Week />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
+            </Page>
           </ParentCtx.Provider>
         )}
       </main>

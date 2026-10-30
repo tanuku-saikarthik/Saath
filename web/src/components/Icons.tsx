@@ -5,6 +5,9 @@ const base = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLin
 export const IconPhone = (p: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" {...base} {...p}><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" /></svg>
 )
+export const IconChat = (p: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" {...base} {...p}><path d="M4 5h16v11H9l-5 4z" /></svg>
+)
 export const IconCheck = (p: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" {...base} strokeWidth={2.2} {...p}><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
 )
