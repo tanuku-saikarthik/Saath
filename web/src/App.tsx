@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { HashRouter, Link, MemoryRouter, Navigate, NavLink, Route, Routes, useLocation } from 'react-router-dom'
-import { api, authStatus, detectMode, type Parent, seededForced } from './api'
+import { api, authStatus, detectMode, openSeededDemo, type Parent, seededForced } from './api'
 import { BrandMark, IconBell, IconCalls, IconHome, IconUser, IconWeek } from './components/Icons'
 import { Loading } from './components/Pieces'
 import Today from './pages/Today'
@@ -21,7 +21,24 @@ export const useParent = () => {
   return c
 }
 
-function Shell({ children, parent, unseen }: { children: React.ReactNode; parent: Parent | null; unseen: number }) {
+/** Top-right menu in the demo: shows "Demo"; opening it reveals the Setup button. */
+function DemoMenu() {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="demo-menu">
+      <button type="button" className="demo-menu-btn" aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen(!open)}>
+        Demo <span aria-hidden="true">▾</span>
+      </button>
+      {open && (
+        <div className="demo-menu-pop" role="menu">
+          <button type="button" role="menuitem" className="btn btn-primary btn-sm" onClick={() => { setOpen(false); window.dispatchEvent(new Event('saath-signin')) }}>Setup</button>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function Shell({ children, parent, unseen, demo }: { children: React.ReactNode; parent: Parent | null; unseen: number; demo: boolean }) {
   const nav = [
     { to: '/', label: 'Today', icon: <IconHome /> },
     { to: '/week', label: 'Week', icon: <IconWeek /> },
@@ -48,6 +65,7 @@ function Shell({ children, parent, unseen }: { children: React.ReactNode; parent
             ))}
           </nav>
         )}
+        {demo && <DemoMenu />}
        </div>
       </header>
       {children}
@@ -83,8 +101,16 @@ function Page({ children }: { children: React.ReactNode }) {
 
 function Gate() {
   const [st, setSt] = useState<'checking' | 'login' | 'ok'>('checking')
-  const check = () =>
-    seededForced() ? Promise.resolve(setSt('ok')) : authStatus().then((a) => setSt(!a.required || a.authed ? 'ok' : 'login')).catch(() => setSt('ok')) // no backend: demo preview
+  // Visitors without the family password land in the demo; Setup (top right) asks for the password.
+  const check = () => {
+    if (seededForced()) return setSt('ok')
+    authStatus()
+      .then((a) => {
+        if (a.required && !a.authed) openSeededDemo()
+        setSt('ok')
+      })
+      .catch(() => setSt('ok')) // no backend: demo preview
+  }
   useEffect(() => {
     check()
     const f = () => setSt('login')
@@ -92,7 +118,7 @@ function Gate() {
     return () => window.removeEventListener('saath-signin', f)
   }, [])
   if (st === 'checking') return <Loading />
-  if (st === 'login') return <Login onDone={() => { setSt('ok'); window.location.reload() }} />
+  if (st === 'login') return <Login onDone={() => { window.location.reload() }} />
   return <Root />
 }
 
@@ -124,7 +150,7 @@ function Root() {
   }, [parent])
 
   return (
-    <Shell parent={parent} unseen={unseen}>
+    <Shell parent={parent} unseen={unseen} demo={demo}>
       {demo && (
         <div className="demo-note">
           <span>Sample data. Calls and changes are off in this view.</span>

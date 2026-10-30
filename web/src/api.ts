@@ -182,6 +182,13 @@ export function seededForced(): boolean {
   try { return sessionStorage.getItem('saath_demo') === '1' } catch { return false }
 }
 
+/** Leave demo mode (used after a successful family sign-in). */
+export function clearDemo() {
+  try { sessionStorage.removeItem('saath_demo') } catch { /* ignore */ }
+  mode = 'unknown'
+  modePromise = null
+}
+
 /** Open the app on the seeded sample history, without a live backend. */
 export function openSeededDemo() {
   try { sessionStorage.setItem('saath_demo', '1') } catch { /* private mode: still opens below */ }
