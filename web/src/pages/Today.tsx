@@ -60,7 +60,7 @@ function SaidVsSounded({ a, name, callId }: { a: NonNullable<Call['analysis']>; 
         <Link to={`/calls/${callId}`} className="sec-link">Open call <IconArrow /></Link>
       </div>
       <Track label="Her words" v={a.text_valence} />
-      <Track label="Her voice" v={a.voice_valence} note="Voice model not on this call" />
+      <Track label="Her voice" v={a.voice_valence} note="Voice model" />
       {a.mismatch && <p className="svs-flag">She said she was fine, but her voice sounds lower than her words.</p>}
       {quote && <p className="svs-quote">“{quote}”</p>}
     </section>

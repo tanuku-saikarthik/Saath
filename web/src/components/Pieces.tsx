@@ -74,7 +74,6 @@ export function AlertCard({ alert, parent, onSeen, anchor }: { alert: Alert; par
       )}
       <div className="alert-actions">
         <a className="btn btn-primary btn-sm" href={`tel:${parent.phone}`}><IconPhone /> Call {parent.address_term}</a>
-        <span className="meta small" style={{ userSelect: 'all' }}>{parent.phone}</span>
         {!alert.seen && onSeen && <button className="btn btn-text btn-sm" onClick={markSeen}>Mark as read</button>}
         {alert.seen && <span className="meta small">Read</span>}
       </div>

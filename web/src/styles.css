@@ -461,7 +461,12 @@ a.row:hover { background: #f7f8fc; }
 .tc-select { border: 1px solid var(--line); border-radius: var(--r-sm); padding: 8px 10px; font: inherit; background: var(--paper); color: var(--ink); min-height: 40px; }
 
 /* ---------- wide screens: use the whole window, not a narrow column ---------- */
-.alerts-page { max-width: 640px; }
+.alerts-page { max-width: 1000px; }
+/* Alerts side by side from tablet width up; phones keep one column */
+@media (min-width: 560px) {
+  .alerts-page .alert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+  .alerts-page .alert-grid > .alert { margin: 0; }
+}
 .alert-grid { display: grid; gap: 14px; }
 @media (min-width: 1100px) {
   .main, .demo-note, .topbar-inner { max-width: 1600px; }
