@@ -225,7 +225,7 @@ export default function Today() {
             <button className="btn btn-quiet btn-sm" onClick={callNow} disabled={calling}>
               <IconPhone /> {calling ? 'Calling…' : 'Call her now'}
             </button>
-            <Link to="/test-call" className="btn btn-quiet btn-sm">Try it in your browser</Link>
+            <Link to="/talk" className="btn btn-quiet btn-sm">Call from this computer</Link>
           </div>
           {callMsg && <p className="toast" role="status">{callMsg}</p>}
         </section>

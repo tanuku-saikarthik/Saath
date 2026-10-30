@@ -159,9 +159,9 @@ export default function TestCall() {
     return (
       <div style={{ maxWidth: 640 }}>
         <Link to="/" className="back"><IconBack /> Today</Link>
-        <h1 className="page-title">Test call</h1>
+        <h1 className="page-title">Call from your computer</h1>
         <p className="empty" style={{ marginTop: 16 }}>
-          The test call needs the Saath backend running with an OpenAI key. Start the backend on your laptop and open the app from there.
+          Calling from your computer works in the live app, not in this preview. Open Saath from the running backend to try it.
         </p>
       </div>
     )
@@ -177,14 +177,14 @@ export default function TestCall() {
   return (
     <div className="tc">
       <Link to="/" className="back"><IconBack /> Today</Link>
-      <h1 className="page-title">Test call</h1>
+      <h1 className="page-title">Call from your computer</h1>
       <p className="muted" style={{ maxWidth: '60ch', margin: '8px 0 16px' }}>
         {kind === 'inbound'
-          ? `Try the Saath line from ${name}'s side: you are her, calling Saath any time of day. Saath answers already knowing her name, medicines and your latest message.`
+          ? `Talk to Saath from ${name}'s side, as if she were calling any time of day. Saath answers already knowing her name, medicines and your latest message.`
           : kind === 'reminder'
             ? `Hear the short reminder call ${name} gets when a medicine is due. You answer as her.`
-            : `Hear tonight's call exactly as ${name} would.`}{' '}
-        In {langCode === 'hi' ? 'Hindi' : 'Telugu'}, through your mic. When you end the call, it's scored and added to her history like a real one.
+            : `Hear tonight's call as ${name} would.`}{' '}
+        No phone needed: it runs in {langCode === 'hi' ? 'Hindi' : 'Telugu'} through this computer's mic. When you end the call, it's scored and added to her history like a real one.
       </p>
       {(phase === 'idle' || phase === 'error') && parent.consent_status === 'granted' && (
         <div className="kind-pick">
@@ -212,7 +212,7 @@ export default function TestCall() {
 
         <div className="tc-controls">
           {phase === 'idle' || phase === 'error' ? (
-            <button className="tc-talk" onClick={start}><IconPhone /> Start test call</button>
+            <button className="tc-talk" onClick={start}><IconPhone /> Start call</button>
           ) : phase === 'recording' ? (
             <button className="tc-talk recording" onClick={stopTalking}>Tap when you're done</button>
           ) : (
@@ -231,7 +231,7 @@ export default function TestCall() {
             On a real phone call, Saath would now {urgent.transfer
               ? `connect ${name} to you live${childPhone ? ` on ${childPhone}` : ''}`
               : `call you${childPhone ? ` on ${childPhone}` : ''} with the alert`}
-            . A test call never phones anyone.
+            . Calls from this computer don't ring any phone.
           </p>
         </section>
       )}

@@ -148,7 +148,8 @@ function Root() {
               <Route path="/alerts" element={<Alerts />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/setup" element={<Setup onDone={load} />} />
-              <Route path="/test-call" element={<TestCall />} />
+              <Route path="/talk" element={<TestCall />} />
+              <Route path="/test-call" element={<Navigate to="/talk" replace />} />
               <Route path="/week" element={<Week />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
