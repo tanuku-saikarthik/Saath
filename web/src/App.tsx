@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { HashRouter, Link, MemoryRouter, Navigate, NavLink, Route, Routes, useLocation } from 'react-router-dom'
-import { api, authStatus, detectMode, type Parent } from './api'
+import { api, authStatus, detectMode, type Parent, seededForced } from './api'
 import { BrandMark, IconBell, IconCalls, IconHome, IconUser, IconWeek } from './components/Icons'
 import { Loading } from './components/Pieces'
 import Today from './pages/Today'
@@ -84,7 +84,7 @@ function Page({ children }: { children: React.ReactNode }) {
 function Gate() {
   const [st, setSt] = useState<'checking' | 'login' | 'ok'>('checking')
   const check = () =>
-    authStatus().then((a) => setSt(!a.required || a.authed ? 'ok' : 'login')).catch(() => setSt('ok')) // no backend: demo preview
+    seededForced() ? Promise.resolve(setSt('ok')) : authStatus().then((a) => setSt(!a.required || a.authed ? 'ok' : 'login')).catch(() => setSt('ok')) // no backend: demo preview
   useEffect(() => {
     check()
     const f = () => setSt('login')
@@ -127,7 +127,7 @@ function Root() {
     <Shell parent={parent} unseen={unseen}>
       {demo && (
         <div className="demo-note">
-          <span>Demo preview with sample history. Run the Saath backend to see live calls.</span>
+          <span>Seeded sample data. Calls and changes are off in this view.</span>
         </div>
       )}
       <main className="main" id="main">

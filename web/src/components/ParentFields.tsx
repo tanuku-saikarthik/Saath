@@ -30,7 +30,7 @@ export function AboutFields({ d, set }: Props) {
       <div className="field">
         <label htmlFor="pphone">Her phone number</label>
         <input id="pphone" type="tel" inputMode="tel" value={d.phone} placeholder="+91 98765 43210" onChange={(e) => set({ ...d, phone: e.target.value })} required />
-        <span className="hint">A normal phone works. No app or smartphone needed.</span>
+        <span className="hint">A normal phone works. No app or smartphone needed. We are on a Bolna trial, so calls only reach numbers verified in Bolna. Enter a verified number.</span>
       </div>
       <div className="field">
         <span id="plang" style={{ fontWeight: 500, fontSize: 14, color: 'var(--ink-2)' }}>Language for the calls</span>

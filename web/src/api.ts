@@ -177,8 +177,20 @@ export function apiUrl(path: string) {
   return BASE + path
 }
 
+/** True when the visitor chose the seeded-data tab on the landing page. */
+export function seededForced(): boolean {
+  try { return sessionStorage.getItem('saath_demo') === '1' } catch { return false }
+}
+
+/** Open the app on the seeded sample history, without a live backend. */
+export function openSeededDemo() {
+  try { sessionStorage.setItem('saath_demo', '1') } catch { /* private mode: still opens below */ }
+  mode = 'demo'
+}
+
 export function detectMode(): Promise<'live' | 'demo'> {
   if (mode !== 'unknown') return Promise.resolve(mode)
+  if (seededForced()) { mode = 'demo'; return Promise.resolve('demo') }
   if (!modePromise) {
     const ctrl = new AbortController()
     const t = setTimeout(() => ctrl.abort(), 2500)

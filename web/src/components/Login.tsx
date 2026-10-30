@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { apiUrl } from '../api'
+import { apiUrl, openSeededDemo } from '../api'
 
 /** Landing page when the server has APP_PASSWORD set and this browser hasn't signed in.
- *  Left: what Setup does. Right: the family password to sign in. */
+ *  Two tabs: "Set up" (steps on the left, family password on the right) and "Seeded data" (sample family, no backend needed). */
 export function Login({ onDone }: { onDone: () => void }) {
+  const [tab, setTab] = useState<'setup' | 'seeded'>('setup')
   const [pw, setPw] = useState('')
   const [err, setErr] = useState('')
   const [busy, setBusy] = useState(false)
@@ -25,33 +26,55 @@ export function Login({ onDone }: { onDone: () => void }) {
     }
   }
 
+  const seeded = () => {
+    openSeededDemo()
+    onDone()
+  }
+
   return (
     <main className="main login-landing">
       <h1 className="page-title">Saath</h1>
-      <p className="hint" style={{ margin: '0 0 18px' }}>A daily call that hears how she really is.</p>
-      <div className="login-grid">
-        <section className="fieldset" aria-labelledby="setup-h">
-          <h2 className="h2" id="setup-h">Set up Saath for a parent</h2>
-          <ol className="login-steps">
-            <li><strong>About her:</strong> her name, what Saath should call her, her phone and language.</li>
-            <li><strong>Medicines and topics:</strong> medicine names and times, and what to ask about.</li>
-            <li><strong>Daily call:</strong> the evening time Saath should call her.</li>
-          </ol>
-          <p className="hint" style={{ margin: '12px 0 0' }}>Setup opens after you sign in with the family password on the right.</p>
-        </section>
-        <section className="fieldset" aria-labelledby="signin-h">
-          <h2 className="h2" id="signin-h">Already set up?</h2>
-          <p className="hint" style={{ margin: '0 0 12px' }}>Enter the family password to open the app.</p>
-          <form className="form" onSubmit={submit}>
-            <div className="field">
-              <label htmlFor="pw">Family password</label>
-              <input id="pw" type="password" autoComplete="current-password" autoFocus value={pw} onChange={(e) => setPw(e.target.value)} />
-            </div>
-            {err && <p className="error" role="alert">{err}</p>}
-            <button className="btn btn-primary" type="submit" disabled={busy || !pw}>{busy ? 'Checking…' : 'Sign in'}</button>
-          </form>
-        </section>
+      <p className="hint" style={{ margin: '0 0 14px' }}>A daily call that hears how she really is.</p>
+      <div className="login-tabs" role="tablist" aria-label="Start here">
+        <button role="tab" aria-selected={tab === 'setup'} className={tab === 'setup' ? 'on' : ''} onClick={() => setTab('setup')}>Set up</button>
+        <button role="tab" aria-selected={tab === 'seeded'} className={tab === 'seeded' ? 'on' : ''} onClick={() => setTab('seeded')}>Seeded data</button>
       </div>
+
+      {tab === 'setup' && (
+        <div className="login-grid">
+          <section className="fieldset" aria-labelledby="setup-h">
+            <h2 className="h2" id="setup-h">Set up Saath for a parent</h2>
+            <ol className="login-steps">
+              <li><strong>About her:</strong> her name, what Saath should call her, her phone and language.</li>
+              <li><strong>Medicines and topics:</strong> medicine names and times, and what to ask about.</li>
+              <li><strong>Daily call:</strong> the evening time Saath should call her.</li>
+            </ol>
+            <p className="hint" style={{ margin: '12px 0 0' }}>Her number must be verified in Bolna while we are on the trial account.</p>
+          </section>
+          <section className="fieldset" aria-labelledby="signin-h">
+            <h2 className="h2" id="signin-h">Already set up?</h2>
+            <p className="hint" style={{ margin: '0 0 12px' }}>Enter the family password to open the app.</p>
+            <form className="form" onSubmit={submit}>
+              <div className="field">
+                <label htmlFor="pw">Family password</label>
+                <input id="pw" type="password" autoComplete="current-password" autoFocus value={pw} onChange={(e) => setPw(e.target.value)} />
+              </div>
+              {err && <p className="error" role="alert">{err}</p>}
+              <button className="btn btn-primary" type="submit" disabled={busy || !pw}>{busy ? 'Checking…' : 'Sign in'}</button>
+            </form>
+          </section>
+        </div>
+      )}
+
+      {tab === 'seeded' && (
+        <section className="fieldset" aria-labelledby="seed-h">
+          <h2 className="h2" id="seed-h">Explore the seeded family</h2>
+          <p className="hint" style={{ margin: '0 0 12px' }}>
+            Two weeks of sample evenings for a parent, with calls, alerts, a week view, and her phone page. Nothing here calls anyone or saves changes.
+          </p>
+          <button className="btn btn-primary" type="button" onClick={seeded}>Open the seeded data</button>
+        </section>
+      )}
     </main>
   )
 }
