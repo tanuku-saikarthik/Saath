@@ -1,35 +1,98 @@
 # Saath
 
-A daily voice check-in call for elderly parents who live alone, in Telugu and Hindi. Saath calls every evening on a normal phone, scores how the parent feels from both their **words** and their **voice**, remembers mood across days, adapts the next call, and alerts the family when mood keeps dropping.
+<p align="center"><img src="docs/voice-wave.svg" alt="Animated voice waveform" width="100%"/></p>
+
+**A daily voice check-in call in Telugu and Hindi for parents who live alone.** Saath calls every evening on a normal phone, scores how she feels from both her **words** and her **voice**, remembers her usual mood, adapts the next call, and alerts the family when she seems lower than usual or needs help.
 
 Built for the Bolna Buildathon (Oct 2026).
 
+> **Live app:** https://saath-v6na.onrender.com/ · example call page: https://saath-v6na.onrender.com/#/calls/26
+> Hosted on Render's free plan, so it may sleep after 15 minutes idle and the first load can be slow. Demo data is labelled as sample history.
+
+## No internet needed on her phone
+
+| Feature | Her phone needs |
+| --- | --- |
+| Daily Saath call | Nothing. It's a normal phone call, no app and no data. |
+| "Call Karthik" button | Nothing. It dials you directly. |
+| SOS button | Nothing for the call. It dials the family directly even with no internet. The alert record is sent once she is online. |
+| "I'm fine today" | Internet. If there's none, the page says "No internet." |
+| Talk to Saath (SOS line) | Nothing. It's a phone call. Shown only when a Saath number is set. |
+| Opening her page | Internet the first time. After that the page opens offline. |
+
+## Screens
+
+| Family app (desktop) | Family app (mobile) |
+| --- | --- |
+| ![Today](docs/screenshots/family-today-desktop.png) | ![Today on mobile](docs/screenshots/family-today-mobile.png) |
+| **Alerts, side by side** | **Week** |
+| ![Alerts](docs/screenshots/family-alerts-desktop.png) | ![Week](docs/screenshots/family-week-desktop.png) |
+
+**Her phone page (mobile):** the big SOS button, a call-you button, and "I'm fine today". The page is in her language (Telugu or Hindi). The screenshot shows sample data.
+
+<p align="center"><img src="docs/screenshots/her-phone-mobile.png" alt="Her phone page on mobile" width="260"/></p>
+
+## Features
+
+**The daily call**
+- Calls her every evening in Telugu or Hindi, built on Bolna voice agents.
+- Greets her by name, knows her medicines, and picks up open threads from the last call.
+- Carries messages from you into the call and brings back her reply.
+- Reminder calls for medicines, and records whether she answered.
+
+**Scoring**
+- **Words:** one LLM call over the transcript returns emotions, valence, evidence quotes, meals, medicines, worries and a summary.
+- **Voice:** emotion2vec+ scores tone on her speech. It isn't trained specifically on Telugu or Hindi, so it's shown beside the words.
+- **Mismatch:** a flag when she says she's fine but her voice sounds low.
+- **Voice wellness:** speaking pace, pauses, loudness and pitch, compared only with her own usual. Worded as a reason to call, never a diagnosis.
+
+**Memory**
+- A 14-day mood memory, so Saath knows her usual.
+- Each call adapts to her: tone, open threads and the medicines to check.
+
+**Alerts**
+- **Urgent:** emergency words, or an SOS.
+- **Sustained drop:** her last 3 calls averaged 0.3 or more below her 14-day median.
+- **Recurring worry:** loneliness or worry in 3 of her last 5 calls.
+- **Voice away from usual:** two or more voice signals away from her usual over her last 3 calls.
+- **Missed check-in:** no answer after a retry.
+- One bad day never sends an alert on its own. All thresholds are starting values, not measured results.
+- Alerts reach you by an alert call from an English agent, and/or a webhook (WhatsApp, email or Slack).
+
+**Family app**
+- **Today:** the one-line answer, the last two weeks, what needs you, a message for her, meals and medicines, tonight's call plan.
+- **Ask her now:** type a question, Saath rings her and brings back the answer.
+- **Week:** the last 7 evenings against the 7 before, with check-ins, medicines, meals, feelings, topics, and best and hardest evening.
+- **Calls and call detail:** words vs voice, how she spoke against her usual, her own words, and the conversation in Telugu/Hindi and English.
+- **Alerts** and **Profile** (reminder times, her Saath number, your phone, which alerts reach you).
+- **Call from your computer:** talk to Saath from the browser, no phone needed.
+
+**Emergencies**
+- Her words trigger an urgent alert the moment she mentions a fall or chest pain.
+- A live transfer (Bolna's Transfer Call tool) connects her to you mid-call.
+- The SOS line: she can call Saath. Saath greets her, knows her context, and alerts you. If the line drops, Saath rings her back.
+
 ## How it works
 
+```mermaid
+flowchart LR
+    Her["Her phone<br/>(normal phone call)"] <-->|daily call, SOS line| Bolna["Bolna voice agents<br/>Telugu / Hindi"]
+    Bolna -->|webhook: transcript + recording| Backend["Saath backend"]
+    Backend --> Score["Score words (LLM)<br/>+ voice (emotion2vec+)"]
+    Score --> Memory[("14-day mood memory<br/>SQLite")]
+    Memory --> Alerts{"Alert rules"}
+    Alerts -->|urgent or sustained drop| Family["Family app"]
+    Alerts -->|alert call| Phone["Your phone<br/>(English agent)"]
+    Alerts -->|webhook| Chat["WhatsApp / email / Slack"]
+    Memory --> Plan["Plan next call<br/>tone, threads, medicines"]
+    Plan --> Backend
+    Backend -->|place call| Bolna
+    HerPage["Her phone page"] -->|SOS: dials family directly| Family
+    HerPage -->|I'm fine, SOS record| Backend
 ```
-Parent's phone ⇄ Bolna agent (Sarvam saaras:v3 STT, LLM, Sarvam bulbul:v3 TTS)
-                     │ webhook: transcript + recording
-                     ▼
-Saath backend ── webhook receiver → emotion pipeline → mood memory + alerts → SQLite
-     ▲              (words: LLM · voice: emotion2vec+ · fusion)                │
-     └── call placer ← context builder (tone, open threads, meds to check) ←──┘
-                                                                              │
-                                                       family app (API) ◄─────┘
-```
-
-- **Words:** one LLM call (Sarvam-105B by default) over the native transcript returns multi-label emotions, valence, arousal, evidence quotes, meals, medicines, worries and a summary. This is LLM scoring against a fixed schema, not a trained classifier.
-- **Voice:** emotion2vec+ large on the parent's speech. It isn't trained specifically on Telugu or Hindi, so it is a tone signal beside the words, never alone.
-- **Fusion:** `mood = 0.6 × text valence + 0.4 × voice valence`; a **mismatch** flag when the parent says they're fine but the voice valence is ≤ −0.3.
-- **Alerts:** urgent (emergency words), she called Saath, sustained drop (last 3 calls ≥ 0.3 below the 14-day median), recurring loneliness/worry (3 of last 5), voice signals away from her usual, missed check-in. All thresholds are starting values, not measured results.
-- **Messages from the child:** write a line in the app; Saath passes it on in tonight's call (in Telugu or Hindi) and brings back her reply. It only counts as delivered if the scoring confirms Saath actually said it.
-- **Emergencies:** a mid-call tool raises the urgent alert the moment she mentions a fall or chest pain, and Bolna's Transfer Call tool can connect her to you live (`prompts/bolna_tools.md`).
-- **Alerts that reach you:** Saath phones you through a second, English Bolna agent (`prompts/agent_alert_en.md`), and/or POSTs every alert, daily summary and Sunday digest to `ALERT_WEBHOOK_URL` for WhatsApp, email or Slack. Each alert shows in the app how it reached you.
-- **Weekly digest:** the last 7 evenings against the 7 before: check-ins, medicines and reminder calls answered, meals, feelings, topics, calls she made, voice changes, best and hardest evening, your messages.
-- **SOS line, she calls Saath:** a Bolna number linked to her agent for inbound calls. Caller identification (`/webhooks/bolna/caller`) answers within Bolna's 3 seconds with her context, so Saath greets her by name, knows her medicines and recent calls, and carries your latest message. You get an "Amma called Saath" alert (urgent if she mentions an emergency, with the same mid-call tool and transfer). If the line drops before she speaks, Saath rings her back, and tells you if she doesn't answer.
-- **Medicine reminder calls:** give a medicine a reminder time and Saath places a short call then, asks if she took it, and records the answer. Reminder calls don't count toward mood, a missed reminder isn't an alert, and the week shows how many she answered.
-- **Voice wellness signals:** from her own audio, Saath measures speaking pace (letters per second of speech, so Telugu and Hindi compare fairly), pause length, loudness and pitch movement (autocorrelation pitch, in semitones), and compares them only with her own usual. Two or more signals away from her usual over the last 3 calls raise a "voice" alert, worded as a reason to call, never a diagnosis. Needs parent-only audio (her recording channel, or the browser test call); on a one-channel recording only the pace from Bolna's speaking time is used. Response delay isn't measured: Bolna doesn't give per-turn timestamps.
 
 ## Run the backend
+
 
 ```bash
 cd backend
