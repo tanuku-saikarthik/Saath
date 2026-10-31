@@ -25,8 +25,6 @@ Built for the Bolna Buildathon (Oct 2026).
 | Family app (desktop) | Family app (mobile) |
 | --- | --- |
 | ![Today](docs/screenshots/family-today-desktop.png) | ![Today on mobile](docs/screenshots/family-today-mobile.png) |
-| **Alerts, side by side** | **Week** |
-| ![Alerts](docs/screenshots/family-alerts-desktop.png) | ![Week](docs/screenshots/family-week-desktop.png) |
 
 **Her phone page (mobile):** the big SOS button, a call-you button, and "I'm fine today". The page is in her language (Telugu or Hindi). The screenshot shows sample data.
 
